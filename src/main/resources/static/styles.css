@@ -1,0 +1,139 @@
+/* Stile Generale */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff0000, #000000);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenitore Principale */
+.login-container {
+    background-color: #fff5e1; /* Colore panna */
+    color: #000;
+    padding: 40px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Logo con sfumature */
+.logo img {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 30px;
+    animation: slideIn 1s ease-in-out;
+    border-radius: 10px; /* Arrotonda leggermente i bordi */
+    background: linear-gradient(135deg, #ff0000, transparent); /* Sfumatura leggera sullo sfondo */
+    padding: 10px; /* Spazio intorno al logo */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 0, 0, 0.2); /* Ombreggiatura sfumata */
+}
+
+
+/* Titolo */
+.login-form h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #ff0000; /* Rosso logo */
+}
+
+/* Campi Form */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-group input {
+    width: 100%;
+    max-width: 300px; /* Larghezza centrata e uniforme */
+    padding: 15px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff5e1; /* Colore panna */
+    color: #000;
+    transition: border-color 0.3s;
+    text-align: center; /* Testo centrato negli input */
+}
+
+.form-group input:focus {
+    border-color: #ff0000; /* Rosso logo */
+    outline: none;
+}
+
+/* Bottone Login */
+.login-button {
+    width: 100%;
+    max-width: 300px; /* Larghezza uniforme come gli input */
+    padding: 15px;
+    background-color: #ff0000; /* Rosso logo */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 auto; /* Centrato */
+}
+
+.login-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* Messaggio Stato Riparazione */
+.status-check {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.status-check h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.status-check a {
+    text-decoration: none;
+    color: #ff0000;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.status-check a:hover {
+    color: #cc0000; /* Rosso scuro */
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
