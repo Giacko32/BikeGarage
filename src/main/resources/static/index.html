@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bike Garage Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -14,10 +15,10 @@
         <div class="login-form">
             <h1>Accedi</h1>
             <div class="form-group">
-                <input type="text" name="username" placeholder="Username" required>
+                <input id="usrnm_field" type="text" name="username" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Password" required>
+                <input id="pswd_field" type="password" name="password" placeholder="Password" required>
             </div>
             <button class="login-button">Login</button>
         </div>
@@ -26,6 +27,7 @@
             <a href="/check-repair-status">Controlla lo stato della tua riparazione</a>
         </div>
     </div>
+    <script src="scripts/scriptLogin.js"></script>
 </body>
 </html>
 
