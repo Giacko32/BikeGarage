@@ -41,16 +41,17 @@ body {
 
 /* Contenuto Principale */
 .main-container {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
     gap: 20px;
+    align-items: center;
 }
 
 /* Sezioni */
-.vehicle-form-section,
-.repair-form-section {
+.utente-form-section {
     background-color: #fff5e1; /* Colore panna */
     color: #000;
     padding: 30px;
@@ -60,80 +61,12 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 
-.vehicle-form-section h2,
-.repair-form-section h2 {
+.utente-form-section h2 {
     font-size: 24px;
     margin-bottom: 25px;
     color: #ff0000; /* Rosso */
 }
 
-/* Campi Form */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
-.form-group input,
-.form-group textarea {
-    padding: 15px;
-    border: 2px solid #000;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #fff5e1; /* Colore panna */
-    color: #000;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #ff0000;
-    outline: none;
-}
-
-/* Bottoni */
-.search-vehicle,
-.create-repair {
-    padding: 12px 20px;
-    background-color: #ff0000; /* Rosso */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.search-vehicle:hover,
-.create-repair:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
-}
-
-/* Messaggi */
-.vehicle-info,
-.new-vehicle {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    color: #000;
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.vehicle-info ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.vehicle-info ul li {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-/* Animazioni */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -143,4 +76,55 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.user-info {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info span {
+    font-size: 14px;
+    color: #000000;
+}
+
+.logout-button {
+    padding: 15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 auto; /* Centrato */
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.search-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.search-table td {
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #000;
+}
+
+/* Form */
+.search-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

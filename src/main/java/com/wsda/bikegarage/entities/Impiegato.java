@@ -19,6 +19,12 @@ public class Impiegato {
     @Column(name = "tipo", nullable = false, length = 2)
     private String tipo;
 
+    @Column(name = "nome", nullable = false)
+    private String nome;
+
+    @Column(name = "cognome", nullable = false)
+    private String cognome;
+
     public Integer getId() {
         return id;
     }
@@ -49,6 +55,22 @@ public class Impiegato {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
 }
