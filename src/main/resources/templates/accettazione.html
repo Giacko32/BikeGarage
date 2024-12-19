@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="english">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Gestione Riparazioni</title>
+    <link rel="stylesheet" href="/styles/stylesAccettazione.css">
+</head>
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="logo-small">
+            <img src="/imgs/logo.png" alt="Logo Officina">
+        </div>
+        <h1 class="garage-title">Bike <span>Garage</span></h1>
+    </div>
+
+    <!-- Contenuto Principale -->
+    <div class="main-container">
+        <!-- Sezione 1: Ricerca Veicolo -->
+        <div class="vehicle-form-section">
+            <h2>Ricerca Veicolo</h2>
+            
+            <div class="form-group">
+                <input type="text" name="license_plate" id="license_plate" placeholder="Inserisci Targa" required>
+            </div>
+            <div class="form-group">
+                <button class="search-vehicle">Cerca Veicolo</button>
+            </div>
+
+            <!-- Sezione Veicolo Trovato -->
+            <div class="vehicle-info" style="display: none;">
+                <h3>Veicolo Trovato</h3>
+                <ul id="foundVehicleDetails">
+                    <li><strong>Cliente:</strong> <span id="ownerName"></span></li>
+                    <li><strong>Modello:</strong> <span id="vehicleModel"></span></li>
+                </ul>
+            </div>
+
+            <!-- Sezione Nuovo Veicolo -->
+            <div class="new-vehicle" style="display: none;">
+                <h3>Nuovo Veicolo</h3>
+                <div class="form-group">
+                    <input type="text" name="owner_name" id="owner_name" placeholder="Nome Proprietario" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="vehicle_model" id="vehicle_model" placeholder="Modello Veicolo" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sezione 2: Creazione Pratica Riparazione -->
+        <div class="repair-form-section">
+            <h2>Dettagli Riparazione</h2>
+            
+            <div class="form-group">
+                <textarea name="repair_notes" id="repair_notes" placeholder="Note sulla riparazione" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <button class="create-repair">Crea Pratica</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

@@ -13,19 +13,19 @@
         <div class="logo">
             <img src="imgs/logo.png" alt="Bike Garage Logo">
         </div>
-        <div class="login-form">
+        <form action="/login" method="post" class="login-form">
             <h1>Accedi</h1>
             <div class="form-group">
                 <input id="usrnm_field" type="text" name="username" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <input id="pswd_field" type="password" name="password" placeholder="Password" required>
+                <input id="pswd_field" type="password" pattern="^[a-zA-Z0-9_!?@]{6,}$" name="password" placeholder="Password" required>
             </div>
-            <button class="login-button">Login</button>
-        </div>
+            <input type="submit" class="login-button" value="Login"></input>
+        </form>
         <div class="status-check">
             <h2>Sei un cliente?</h2>
-            <a href="/check-repair-status">Controlla lo stato della tua riparazione</a>
+            <a href="/riparazione.html">Controlla lo stato della tua riparazione</a>
         </div>
     </div>
     <script src="scripts/scriptLogin.js"></script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Ricambi - Magazziniere</title>
+    <link rel="stylesheet" href="/styles/stylesMagazzino.css">
+</head>
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="logo-small">
+            <img src="/imgs/logo.png" alt="Logo Officina">
+        </div>
+        <h1 class="garage-title">Bike <span>Garage</span></h1>
+    </div>
+
+    <!-- Contenuto Principale -->
+    <div class="main-container">
+        <!-- Sezione Archivio Ricambi -->
+        <div class="inventory-section">
+            <h2>Archivio Ricambi</h2>
+            <ul class="inventory-list">
+                <li class="inventory-item">
+                    <span><strong>Nome:</strong> Freno Anteriore</span>
+                    <span><strong>Quantità:</strong> 10</span>
+                    <span><strong>Prezzo:</strong> €50</span>
+                </li>
+                <li class="inventory-item">
+                    <span><strong>Nome:</strong> Olio Motore</span>
+                    <span><strong>Quantità:</strong> 5</span>
+                    <span><strong>Prezzo:</strong> €25</span>
+                </li>
+                <!-- Altri ricambi aggiunti dinamicamente -->
+            </ul>
+        </div>
+
+        <!-- Sezione Aggiunta Ricambi -->
+        <div class="add-part-section">
+            <h2>Aggiungi Ricambio</h2>
+            <div class="form-group">
+                <input type="text" id="part_name" placeholder="Nome Ricambio" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="part_quantity" placeholder="Quantità" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="part_price" placeholder="Prezzo (€)" required>
+            </div>
+            <button class="add-part" onclick="addPart()">Aggiungi Ricambio</button>
+        </div>
+    </div>
+
+    <script>
+        function addPart() {
+            const name = document.getElementById('part_name').value;
+            const quantity = document.getElementById('part_quantity').value;
+            const price = document.getElementById('part_price').value;
+
+            if (name && quantity && price) {
+                alert(`Ricambio aggiunto: ${name}, Quantità: ${quantity}, Prezzo: €${price}`);
+                // Logica per aggiornare l'elenco dei ricambi.
+            } else {
+                alert('Compila tutti i campi!');
+            }
+        }
+    </script>
+</body>
+</html>

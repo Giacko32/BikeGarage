@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Riparazioni - Meccanico</title>
+    <link rel="stylesheet" href="/styles/stylesMeccanico.css">
+</head>
+
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="logo-small">
+            <img src="/imgs/logo.png" alt="Logo Officina">
+        </div>
+        <h1 class="garage-title">Bike <span>Garage</span></h1>
+    </div>
+
+    <!-- Contenuto Principale -->
+    <div class="main-container">
+        <!-- Sezione Elenco Moto -->
+        <div class="vehicle-list-section">
+            <h2>Moto in Attesa</h2>
+            <ul class="vehicle-list">
+                <li class="vehicle-item">
+                    <span>Targa: <strong>AB123CD</strong></span>
+                    <span>Stato: <strong>Accettata</strong></span>
+                    <button class="select-vehicle" onclick="selectVehicle('AB123CD')">Seleziona</button>
+                </li>
+                <li class="vehicle-item">
+                    <span>Targa: <strong>EF456GH</strong></span>
+                    <span>Stato: <strong>In lavorazione</strong></span>
+                    <button class="select-vehicle" onclick="selectVehicle('EF456GH')">Seleziona</button>
+                </li>
+                <!-- Aggiungere ulteriori moto dinamicamente -->
+            </ul>
+        </div>
+
+        <!-- Sezione Dettagli Moto -->
+        <div class="vehicle-details-section">
+            <h2>Dettagli Moto</h2>
+            <div id="selectedVehicle" style="display: none;">
+                <p><strong>Targa:</strong> <span id="vehiclePlate"></span></p>
+                <p><strong>Stato Attuale:</strong> <span id="currentState"></span></p>
+                <div class="form-group">
+                    <textarea name="work_notes" id="work_notes" placeholder="Annotazioni sulle lavorazioni"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="work_hours" id="work_hours" placeholder="Ore Lavorate" min="0"
+                        step="0.5">
+                </div>
+                <div class="form-group">
+                    <label for="new_status">Modifica Stato:</label>
+                    <select id="new_status">
+                        <option value="in lavorazione">In lavorazione</option>
+                        <option value="completata">Completata</option>
+                    </select>
+                </div>
+                <button class="update-vehicle" onclick="updateVehicle()">Aggiorna</button>
+            </div>
+            <div id="noVehicleSelected">
+                <p>Seleziona una moto per visualizzarne i dettagli e aggiornare lo stato.</p>
+            </div>
+        </div>
+
+        <!-- Aggiungere alla vista meccanico -->
+        <div class="add-part-section">
+            <h2>Pezzi Utilizzati</h2>
+            <div class="form-group">
+                <label for="parts_used">Seleziona Ricambi:</label>
+                <select id="parts_used" multiple>
+                    <option value="Freno Anteriore">Freno Anteriore (€50)</option>
+                    <option value="Olio Motore">Olio Motore (€25)</option>
+                    <!-- Altri ricambi dinamici -->
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="add-used-parts" onclick="addUsedParts()">Aggiungi Pezzi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funzioni JavaScript per gestire la selezione delle moto
+        function selectVehicle(plate) {
+            document.getElementById('selectedVehicle').style.display = 'block';
+            document.getElementById('noVehicleSelected').style.display = 'none';
+            document.getElementById('vehiclePlate').innerText = plate;
+            document.getElementById('currentState').innerText = "Accettata"; // Esempio, dovrebbe essere dinamico
+        }
+
+        function updateVehicle() {
+            const newStatus = document.getElementById('new_status').value;
+            alert(`Lo stato della moto è stato aggiornato a: ${newStatus}`);
+        }
+    </script>
+</body>
+
+</html>

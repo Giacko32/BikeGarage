@@ -1,0 +1,118 @@
+/* Stile Generale */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff0000, #000000); /* Gradient Rosso-Nero */
+    color: #fff;
+    min-height: 100vh; /* Imposta l'altezza minima */
+    display: flex; /* Usato per il posizionamento del contenuto */
+    flex-direction: column; /* Mantiene la struttura in verticale */
+}
+
+/* Topbar */
+.topbar {
+    background-color: #fff5e1; /* Colore panna */
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo-small img {
+    width: 60px;
+    height: auto;
+}
+
+.garage-title {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.garage-title span {
+    color: #ff0000;
+}
+
+/* Contenitore Principale */
+.main-container {
+    flex: 1; /* Prende tutto lo spazio disponibile */
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+    align-items: flex-start; /* Allinea gli elementi in alto */
+}
+
+/* Sezioni */
+.inventory-section,
+.add-part-section {
+    background-color: #fff5e1; /* Colore panna */
+    color: #000; /* Testo nero */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    flex: 1; /* Ogni sezione occupa metà spazio */
+    max-width: 48%; /* Evita che le sezioni siano troppo larghe */
+}
+
+.inventory-section h2,
+.add-part-section h2 {
+    color: #ff0000; /* Rosso */
+    margin-bottom: 20px;
+}
+
+/* Lista Ricambi */
+.inventory-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inventory-item {
+    background-color: #fff; /* Colore bianco */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #000; /* Testo nero */
+}
+
+/* Form Ricambi */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #ff0000; /* Colore rosso al focus */
+}
+
+button.add-part {
+    width: 100%; /* Bottone a tutta larghezza */
+    padding: 10px 15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button.add-part:hover {
+    background-color: #cc0000; /* Rosso più scuro */
+    transform: scale(1.05); /* Leggera espansione */
+}

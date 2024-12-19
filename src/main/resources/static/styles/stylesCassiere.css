@@ -1,0 +1,99 @@
+/* Stile Generale */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff0000, #000000); /* Gradient Rosso-Nero */
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Topbar */
+.topbar {
+    background-color: #fff5e1; /* Colore panna */
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo-small img {
+    width: 60px;
+    height: auto;
+}
+
+.garage-title {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.garage-title span {
+    color: #ff0000;
+}
+
+/* Contenitore Principale */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Sezione di Ricerca */
+.repair-search-section {
+    background-color: #fff5e1;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.repair-search-section h2 {
+    color: #ff0000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Campi di Input e Bottoni */
+.form-group {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #ff0000;
+}
+
+button.search-repair {
+    padding: 10px 15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button.search-repair:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
