@@ -8,6 +8,6 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@RequestParam(name="username", required = true) String username, @RequestParam(name = "password", required = true) String password) {
         System.out.println(username + " " + password);
-        return "login";
+        return "ciao";
     }
 }

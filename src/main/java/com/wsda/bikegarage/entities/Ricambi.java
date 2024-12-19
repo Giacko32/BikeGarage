@@ -16,7 +16,7 @@ public class Ricambi {
     private String nome;
 
     @Column(name = "`quantità`")
-    private Integer quantità;
+    private Integer quantita;
 
     @Column(name = "prezzo", nullable = false)
     private Float prezzo;
@@ -37,12 +37,12 @@ public class Ricambi {
         this.nome = nome;
     }
 
-    public Integer getQuantità() {
-        return quantità;
+    public Integer getQuantita() {
+        return quantita;
     }
 
-    public void setQuantità(Integer quantità) {
-        this.quantità = quantità;
+    public void setQuantita(Integer quantita) {
+        this.quantita = quantita;
     }
 
     public Float getPrezzo() {
