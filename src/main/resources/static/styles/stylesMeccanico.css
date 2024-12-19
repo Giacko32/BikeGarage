@@ -83,20 +83,28 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.vehicle-item button {
-    padding: 8px 12px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
     transition: transform 0.3s;
 }
 
-.vehicle-item button:hover {
+.vehicle-item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.vehicle-item-lav {
+    background-color: #fff;
+    color: #000;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.vehicle-item-lav:hover {
+    cursor: pointer;
     transform: scale(1.1);
 }
 
@@ -209,3 +217,4 @@ body {
         transform: translateY(0);
     }
 }
+

@@ -15,7 +15,7 @@ public class Moto {
     @Column(name = "marca", nullable = false)
     private String marca;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_utente", nullable = false)
     private com.wsda.bikegarage.entities.Utente idUtente;
 

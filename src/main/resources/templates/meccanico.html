@@ -23,17 +23,19 @@
         <div class="vehicle-list-section">
             <h2>Moto in Attesa</h2>
             <ul class="vehicle-list">
-                <li class="vehicle-item">
-                    <span>Targa: <strong>AB123CD</strong></span>
-                    <span>Stato: <strong>Accettata</strong></span>
-                    <button class="select-vehicle" onclick="selectVehicle('AB123CD')">Seleziona</button>
+                <li th:each="riparazione : ${riparazioni}" th:class="vehicle-item">
+                    <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
+                    <span>Stato: <strong>Attesa</strong></span>
                 </li>
-                <li class="vehicle-item">
-                    <span>Targa: <strong>EF456GH</strong></span>
+            </ul>
+        </div>
+        <div class="vehicle-list-section">
+            <h2>Le moto a cui stai lavorando</h2>
+            <ul class="vehicle-list">
+                <li th:each="riparazione : ${riparazioniMie}" th:class="vehicle-item-lav">
+                    <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
                     <span>Stato: <strong>In lavorazione</strong></span>
-                    <button class="select-vehicle" onclick="selectVehicle('EF456GH')">Seleziona</button>
                 </li>
-                <!-- Aggiungere ulteriori moto dinamicamente -->
             </ul>
         </div>
 
@@ -65,7 +67,7 @@
         </div>
 
         <!-- Aggiungere alla vista meccanico -->
-        <div class="add-part-section">
+        <div class="add-part-section" style="display: none;">
             <h2>Pezzi Utilizzati</h2>
             <div class="form-group">
                 <label for="parts_used">Seleziona Ricambi:</label>
@@ -76,25 +78,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <button class="add-used-parts" onclick="addUsedParts()">Aggiungi Pezzi</button>
+                <button class="add-used-parts">Aggiungi Pezzi</button>
             </div>
         </div>
     </div>
-
-    <script>
-        // Funzioni JavaScript per gestire la selezione delle moto
-        function selectVehicle(plate) {
-            document.getElementById('selectedVehicle').style.display = 'block';
-            document.getElementById('noVehicleSelected').style.display = 'none';
-            document.getElementById('vehiclePlate').innerText = plate;
-            document.getElementById('currentState').innerText = "Accettata"; // Esempio, dovrebbe essere dinamico
-        }
-
-        function updateVehicle() {
-            const newStatus = document.getElementById('new_status').value;
-            alert(`Lo stato della moto è stato aggiornato a: ${newStatus}`);
-        }
-    </script>
 </body>
 
 </html>

@@ -21,9 +21,13 @@ public class Riparazione {
     @Column(name = "Ore", nullable = false)
     private Integer ore;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_meccanico")
     private Impiegato idMeccanico;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "targa", nullable = false)
+    private Moto targa;
 
     public Integer getId() {
         return id;
@@ -63,6 +67,14 @@ public class Riparazione {
 
     public void setIdMeccanico(Impiegato idMeccanico) {
         this.idMeccanico = idMeccanico;
+    }
+
+    public Moto getTarga() {
+        return targa;
+    }
+
+    public void setTarga(Moto targa) {
+        this.targa = targa;
     }
 
 }

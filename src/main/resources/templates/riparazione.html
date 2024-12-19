@@ -6,6 +6,7 @@
     <title>Controlla Stato Riparazione</title>
     <link rel="stylesheet" href="/styles/stylesRiparazione.css" type="text/css">
     <link rel="icon" type="image/x-icon" href="/imgs/logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <!-- Topbar -->
@@ -21,12 +22,12 @@
         <div class="repair-check-form">
             <h2>Controlla Stato Riparazione</h2>
             <div class="form-group">
-                <input type="text" name="license_plate" placeholder="Inserisci Targa" required>
+                <input type="text" id="targa" name="license_plate" placeholder="Inserisci Targa" required>
             </div>
             <div class="form-group">
-                <input type="text" name="repair_code" placeholder="Inserisci Codice Riparazione" required>
+                <input type="text" id="code" name="repair_code" placeholder="Inserisci Codice Riparazione" required>
             </div>
-            <button class="check-button">Controlla</button>
+            <button id="checkbutton" class="check-button">Controlla</button>
         </div>
         
         <!-- Sezione Risultati -->
@@ -44,6 +45,7 @@
             </div>
         </div>
     </div>
+    <script src="/scripts/checkstatus.js"></script>
 </body>
 </html>
 

@@ -1,5 +1,6 @@
 package com.wsda.bikegarage.controllers;
 import com.wsda.bikegarage.entities.Impiegato;
+import com.wsda.bikegarage.entities.Riparazione;
 import com.wsda.bikegarage.entities.Utente;
 import com.wsda.bikegarage.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+
     @PostMapping("/login")
     public String login(@RequestParam(name="username", required = true) String username, @RequestParam(name = "password", required = true) String password, Model model) {
         Impiegato impiegato = loginService.getImpiegato(username, password);
@@ -26,6 +28,10 @@ public class LoginController {
             model.addAttribute("error", true);
             return "index";
         } else if (impiegato.getTipo().equals("mc")) {
+            List<Riparazione> riparazioni = loginService.getAllRiparazioneAttesa().stream().toList();
+            List<Riparazione> riparazioniMie = loginService.getAllRiparazioneMie(impiegato.getId()).stream().toList();
+            model.addAttribute("riparazioni", riparazioni);
+            model.addAttribute("riparazioniMie", riparazioniMie);
             return "meccanico";
         } else if (impiegato.getTipo().equals("ac")) {
             List<Utente> clienti = loginService.getAllUtenti().stream().toList();
