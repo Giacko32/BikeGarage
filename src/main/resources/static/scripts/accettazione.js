@@ -38,12 +38,12 @@ $(document).ready(function () {
         const email= $("#email").val().trim()
         const cognome= $("#cognome").val().trim()
         if(nome.length > 0 && email.length > 0 && cognome.length > 0){
-        $.post("/registra", {
+        $.post("/accettazione/registra", {
             "nome": nome,
             "cognome": cognome,
             "email": email
         }, function (data) {
-            if (data != null){
+            if (data.id !== 0){
             const new_row = $("<tr></tr>")
             new_row.addClass("user-row")
             new_row.id = data.id;
@@ -55,10 +55,16 @@ $(document).ready(function () {
             $(".registration-form-section").hide()
             alert("Utente registrato con successo")
         }else{
-
+                alert("Mail già registrata")
             }})
         }else{
-
+            alert("Campi vuoti, impossibile procedere")
         }
+    })
+
+    $(".user-row").click(function (){
+        $.get("/accettazione/motoById", {"id": $(this).attr("id")}, function (data) {
+            console.log(data);
+        })
     })
 })

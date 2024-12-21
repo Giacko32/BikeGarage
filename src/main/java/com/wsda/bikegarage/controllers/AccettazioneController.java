@@ -1,13 +1,16 @@
 package com.wsda.bikegarage.controllers;
 
 import com.wsda.bikegarage.entities.Cliente;
+import com.wsda.bikegarage.entities.Moto;
 import com.wsda.bikegarage.services.AccettazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/accettazione")
+import java.util.Collection;
+
+@RestController
+@RequestMapping("/accettazione")
 public class AccettazioneController {
 
     @Autowired
@@ -29,5 +32,14 @@ public class AccettazioneController {
             return null;
         }
         return cliente;
+    }
+
+    @GetMapping("/motoById")
+    public Collection<Moto> motoById(@RequestParam(name = "id", required = true) int id) {
+        try {
+            return accettazioneService.getMotoById(id);
+        }catch (Exception e){
+            return null;
+        }
     }
 }

@@ -2,10 +2,13 @@ package com.wsda.bikegarage.security;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+
 import com.wsda.bikegarage.entities.Impiegato;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 public class MyUserDetails implements UserDetails {
 
@@ -18,7 +21,7 @@ public class MyUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(impiegato.getTipo());
-        return Arrays.asList(authority);
+        return List.of(authority);
     }
 
     @Override

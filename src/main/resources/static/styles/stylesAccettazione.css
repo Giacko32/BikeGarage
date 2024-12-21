@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     height: 100vh;
 }
+
 .topbar {
     background-color: #fff5e1;
     color: #000;
@@ -16,10 +17,12 @@ body {
     padding: 10px 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
 .logo-small img {
     width: 60px;
     height: auto;
 }
+
 .garage-title {
     margin-left: 20px;
     font-size: 24px;
@@ -28,49 +31,52 @@ body {
     letter-spacing: 2px;
     color: #000;
 }
+
 .garage-title span {
     color: #ff0000;
     font-style: italic;
 }
-.main-container {
-    margin-left: 5%;
-    width: 40%;
+
+.flex-container {
     display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 90%;
+    margin: 20px auto 0;
 }
-.utente-form-section {
-    background-color: #fff5e1;
-    color: #000;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1s ease-in-out;
+
+.main-container, .registration-form-section {
+    margin-top: 30px;
+    width: 45%;
 }
-.utente-form-section h2 {
-    font-size: 24px;
-    margin-bottom: 25px;
-    color: #ff0000;
-}
+
 .registration-form-section {
     display: none;
+}
+
+.utente-form-section, .registration-form-section {
     background-color: #fff5e1;
     color: #000;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 40%;
-    position: absolute;
-    right: 5%;
-    top: 100px;
     animation: fadeIn 1s ease-in-out;
 }
-.registration-form-section h2 {
-    font-size: 24px;
+
+.utente-form-section h2, .registration-form-section h2 {
+    font-size: 22px; /* Reduce the size of section headings */
+    margin-bottom: 20px;
     color: #ff0000;
+}
+
+.registration-form-section h2 {
+    font-size: 22px; /* Reduce the size of section headings */
     margin-bottom: 15px;
-    text-align: center;
+    text-align: left; /* Align text to the left instead of center for better readability */
 }
 
 .registration-form {
@@ -106,9 +112,11 @@ body {
     border-color: #ff0000;
     outline: none;
 }
+
 button, input[type="submit"] {
     cursor: pointer;
 }
+
 .submit-button {
     background-color: #ff0000;
     color: white;
@@ -120,6 +128,7 @@ button, input[type="submit"] {
     display: block;
     margin: 20px auto;
 }
+
 .submit-button:hover {
     background-color: #cc0000;
     transform: scale(1.05);
@@ -149,11 +158,13 @@ button, input[type="submit"] {
     outline: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
 .search-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
+
 .search-table th {
     background-color: #ff0000;
     color: white;
@@ -161,6 +172,7 @@ button, input[type="submit"] {
     text-align: center;
     font-size: 18px;
 }
+
 .search-table td {
     background-color: #fff;
     color: #000;
@@ -169,13 +181,16 @@ button, input[type="submit"] {
     text-align: center;
     font-size: 16px;
 }
+
 .search-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
 .search-table tbody tr:hover {
     background-color: #ffe5e5;
     cursor: pointer;
 }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
