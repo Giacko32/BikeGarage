@@ -1,14 +1,12 @@
 package com.wsda.bikegarage.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "utente", schema = "bikegarage")
-public class Utente {
+@Table(name = "cliente", schema = "bikegarage")
+public class Cliente {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
 

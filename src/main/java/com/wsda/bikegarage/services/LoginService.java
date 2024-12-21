@@ -2,10 +2,10 @@ package com.wsda.bikegarage.services;
 
 import com.wsda.bikegarage.entities.Impiegato;
 import com.wsda.bikegarage.entities.Riparazione;
-import com.wsda.bikegarage.entities.Utente;
+import com.wsda.bikegarage.entities.Cliente;
 import com.wsda.bikegarage.repositories.ImpiegatoRepository;
 import com.wsda.bikegarage.repositories.RiparazioneRepository;
-import com.wsda.bikegarage.repositories.UtenteRepository;
+import com.wsda.bikegarage.repositories.ClienteRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class LoginService {
     private ImpiegatoRepository impiegatoRepository;
 
     @Autowired
-    private UtenteRepository utenteRepository;
+    private ClienteRepository clienteRepository;
 
     @Autowired
     private RiparazioneRepository riparazioneRepository;
@@ -31,8 +31,8 @@ public class LoginService {
         return impiegato;
     }
 
-    public Collection<Utente> getAllUtenti() {
-        return utenteRepository.findAll();
+    public Collection<Cliente> getAllUtenti() {
+        return clienteRepository.findAll();
     }
 
 

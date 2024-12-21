@@ -1,17 +1,14 @@
-/* Stile Generale */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff0000, #000000); /* Gradient Rosso-Nero */
+    background: linear-gradient(135deg, #ff0000, #000000);
     color: #fff;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
-
-/* Topbar */
 .topbar {
-    background-color: #fff5e1; /* Colore panna */
+    background-color: #fff5e1;
     color: #000;
     display: flex;
     align-items: center;
@@ -19,64 +16,200 @@ body {
     padding: 10px 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
 .logo-small img {
-    width: 60px; /* Logo più grande */
+    width: 60px;
     height: auto;
 }
-
 .garage-title {
     margin-left: 20px;
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #000; /* Nero */
+    color: #000;
 }
-
 .garage-title span {
-    color: #ff0000; /* Rosso */
+    color: #ff0000;
     font-style: italic;
 }
-
-/* Contenuto Principale */
 .main-container {
-    margin: 0 auto;
+    margin-left: 5%;
+    width: 40%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 20px;
     gap: 20px;
-    align-items: center;
-    width: 80%;
 }
-
-/* Sezioni */
 .utente-form-section {
-    background-color: #fff5e1; /* Colore panna */
+    background-color: #fff5e1;
     color: #000;
     padding: 30px;
     border-radius: 10px;
-    width: 45%; /* Larghezza metà */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     animation: fadeIn 1s ease-in-out;
 }
-
 .utente-form-section h2 {
     font-size: 24px;
     margin-bottom: 25px;
-    color: #ff0000; /* Rosso */
+    color: #ff0000;
+}
+.registration-form-section {
+    display: none;
+    background-color: #fff5e1;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 40%;
+    position: absolute;
+    right: 5%;
+    top: 100px;
+    animation: fadeIn 1s ease-in-out;
+}
+.registration-form-section h2 {
+    font-size: 24px;
+    color: #ff0000;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
+.registration-form {
+    display: flex;
+    flex-direction: column; /* Disposizione verticale */
+    align-items: center; /* Centra gli elementi nel contenitore */
+    gap: 15px; /* Spaziatura tra le righe */
+}
+
+.registration-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px; /* Spazio tra l'etichetta e l'input */
+    text-align: left; /* Allinea il testo a sinistra */
+    width: 100%; /* Occupa tutta la larghezza del contenitore */
+    max-width: 500px; /* Limita la larghezza */
+}
+
+.registration-form input {
+    width: 100%; /* Rende il campo di input largo quanto il contenitore */
+    max-width: 500px; /* Imposta una larghezza massima */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease;
+}
+
+.registration-form input:focus {
+    border-color: #ff0000;
+    outline: none;
+}
+button, input[type="submit"] {
+    cursor: pointer;
+}
+.submit-button {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+.submit-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center; /* Allinea al centro orizzontalmente */
+    align-items: center; /* Allinea al centro verticalmente */
+    width: 100%; /* Assicura che la barra occupi tutto lo spazio del contenitore */
+}
+
+.search-bar input {
+    width: 80%; /* Mantiene l'input centrato e della giusta dimensione */
+    max-width: 500px; /* Imposta una dimensione massima per input più piccolo */
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    margin: 10px auto;
+    border-color: #cc0000;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.search-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.search-table th {
+    background-color: #ff0000;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+.search-table td {
+    background-color: #fff;
+    color: #000;
+    padding: 15px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 16px;
+}
+.search-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.search-table tbody tr:hover {
+    background-color: #ffe5e5;
+    cursor: pointer;
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.crea-button {
+    display: block;
+    margin: 20px auto 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.crea-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.crea-button:active {
+    background-color: #a00000;
+    transform: scale(1);
 }
 
 .user-info {
@@ -110,169 +243,9 @@ body {
     transform: scale(1.05);
 }
 
-.search-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-}
-
-.search-table td {
-    padding: 15px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #000;
-}
-
-/* Stile della barra di ricerca */
-.search-bar {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.search-bar input {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ff0000;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.search-bar input:focus {
-    border-color: #cc0000;
-    outline: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Stile della tabella */
-.search-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.search-table th {
-    background-color: #ff0000;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
-}
-
-.search-table td {
-    background-color: #fff;
-    color: #000;
-    padding: 15px;
-    border: 1px solid #ccc;
-    text-align: center;
-    font-size: 16px;
-}
-
-.search-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
 .search-table tbody tr:hover {
     background-color: #ffe6e6;
     cursor: pointer;
     transform: scale(1.01);
     transition: all 0.3s ease;
-}
-
-.utente-form-section {
-    overflow: hidden;
-    padding: 20px;
-}
-
-.utente-form-section .search-table {
-    width: 100%;
-    overflow-x: auto;
-}
-/* Stile del pulsante "Aggiungi nuovo cliente" */
-.crea-button {
-    display: block;
-    margin: 0 auto 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #ff0000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.crea-button:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
-}
-
-.crea-button:active {
-    background-color: #a00000;
-    transform: scale(1);
-}
-.registration-form-section {
-    background-color: #fff5e1; /* Colore panna */
-    color: #000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 50%;
-    margin: 20px auto;
-    animation: fadeIn 1s ease-in-out;
-}
-
-.registration-form-section h2 {
-    font-size: 24px;
-    color: #ff0000; /* Rosso */
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.registration-form .form-group {
-    margin-bottom: 15px;
-}
-
-.registration-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #000;
-}
-
-.registration-form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: border-color 0.3s ease;
-}
-
-.registration-form input:focus {
-    border-color: #ff0000;
-    outline: none;
-}
-
-.submit-button {
-    background-color: #ff0000;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: block;
-    margin: 0 auto;
-}
-
-.submit-button:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
 }

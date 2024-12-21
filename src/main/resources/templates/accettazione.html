@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-<!-- Topbar -->
 <div class="topbar">
     <div class="logo-small">
         <img src="/imgs/logo.png" alt="Logo Officina">
@@ -24,20 +23,13 @@
         </form>
     </div>
 </div>
-
-<!-- Contenuto Principale -->
 <div class="main-container">
     <div class="utente-form-section">
         <h2>Ricerca Cliente</h2>
-
-        <!-- Barra di ricerca -->
         <div class="search-bar">
             <input type="text" placeholder="Cerca cliente per nome" id="filter-cliente">
         </div>
-
         <button class="crea-button" id="crea-cliente">Aggiungi nuovo cliente</button>
-
-        <!-- Form di ricerca -->
         <form class="search-form">
             <table class="search-table" id="clientTable">
                 <thead>
@@ -63,9 +55,10 @@
         </form>
     </div>
 </div>
-<div class="registration-form-section" style="display: none">
+
+<div class="registration-form-section">
     <h2>Registrazione Nuovo Cliente</h2>
-    <form class="registration-form" th:action="@{/registerClient}" method="post">
+    <form class="registration-form">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Inserisci il nome" required>
@@ -78,11 +71,9 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Inserisci l'email" required>
         </div>
-        <button type="submit" class="submit-button">Registra Cliente</button>
+        <button type="submit" id="register-button" class="submit-button">Registra Cliente</button>
     </form>
 </div>
 <script src="/scripts/accettazione.js"></script>
 </body>
 </html>
-
-

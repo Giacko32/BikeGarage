@@ -1,7 +1,7 @@
 package com.wsda.bikegarage.controllers;
 import com.wsda.bikegarage.entities.Impiegato;
 import com.wsda.bikegarage.entities.Riparazione;
-import com.wsda.bikegarage.entities.Utente;
+import com.wsda.bikegarage.entities.Cliente;
 import com.wsda.bikegarage.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -34,7 +32,7 @@ public class LoginController {
             model.addAttribute("riparazioniMie", riparazioniMie);
             return "meccanico";
         } else if (impiegato.getTipo().equals("ac")) {
-            List<Utente> clienti = loginService.getAllUtenti().stream().toList();
+            List<Cliente> clienti = loginService.getAllUtenti().stream().toList();
             model.addAttribute("clienti", clienti);
             return "accettazione";
         } else if (impiegato.getTipo().equals("ca")) {

@@ -16,8 +16,8 @@ public class Moto {
     private String marca;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_utente", nullable = false)
-    private com.wsda.bikegarage.entities.Utente idUtente;
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente idCliente;
 
     public String getTarga() {
         return targa;
@@ -43,12 +43,12 @@ public class Moto {
         this.marca = marca;
     }
 
-    public com.wsda.bikegarage.entities.Utente getIdUtente() {
-        return idUtente;
+    public Cliente getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdUtente(com.wsda.bikegarage.entities.Utente idUtente) {
-        this.idUtente = idUtente;
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
     }
 
 }
