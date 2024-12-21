@@ -17,6 +17,11 @@ public class CheckStatusService {
     public Riparazione getRiparazione(int code,String Targa){
         Moto moto = new Moto();
         moto.setTarga(Targa);
-        return riparazioneRepository.findRiparazioneByIdAndTarga(code,moto);
+        Riparazione riparazione = riparazioneRepository.findRiparazioneByIdAndTarga(code,moto);
+        if(riparazione == null){
+            riparazione = new Riparazione();
+            riparazione.setId(0);
+        }
+        return riparazione;
     }
 }
