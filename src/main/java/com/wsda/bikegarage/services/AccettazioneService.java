@@ -14,9 +14,13 @@ public class AccettazioneService {
     private ClienteRepository clienteRepository;
 
     public Cliente registraCliente(Cliente cliente) {
-        Cliente cliente1 = clienteRepository.save(cliente);
-        System.out.println("Cliente registrato: " + cliente);
-        return cliente1;
+        if (clienteRepository.findClienteByEmail(cliente.getEmail()) == null) {
+            Cliente cliente1 = clienteRepository.save(cliente);
+            System.out.println("Cliente registrato: " + cliente);
+            return cliente1;
+        } else {
+            return null;
+        }
     }
 }
 

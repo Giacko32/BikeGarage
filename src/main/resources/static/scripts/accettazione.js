@@ -34,11 +34,16 @@ $(document).ready(function () {
 
     $("#register-button").click(function (event){
         event.preventDefault()
+        const nome= $("#nome").val().trim()
+        const email= $("#email").val().trim()
+        const cognome= $("#cognome").val().trim()
+        if(nome.length > 0 && email.length > 0 && cognome.length > 0){
         $.post("/registra", {
-            "nome": $("#nome").val(),
-            "cognome": $("#cognome").val(),
-            "email": $("#email").val()
+            "nome": nome,
+            "cognome": cognome,
+            "email": email
         }, function (data) {
+            if (data != null){
             const new_row = $("<tr></tr>")
             new_row.addClass("user-row")
             new_row.id = data.id;
@@ -49,6 +54,11 @@ $(document).ready(function () {
             $("tbody").append(new_row)
             $(".registration-form-section").hide()
             alert("Utente registrato con successo")
-        })
+        }else{
+
+            }})
+        }else{
+
+        }
     })
 })

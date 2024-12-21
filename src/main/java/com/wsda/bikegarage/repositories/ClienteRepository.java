@@ -8,4 +8,5 @@ import java.util.Collection;
 public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
     Cliente findClienteById(int id);
     Collection<Cliente> findAll();
+    Cliente findClienteByEmail(String email);
 }
