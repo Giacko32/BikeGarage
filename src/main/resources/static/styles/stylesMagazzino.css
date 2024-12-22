@@ -116,3 +116,74 @@ button.add-part:hover {
     background-color: #cc0000; /* Rosso più scuro */
     transform: scale(1.05); /* Leggera espansione */
 }
+/* Effetto Hover per gli elementi della lista */
+.inventory-item {
+    background-color: #fff; /* Colore bianco */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #000; /* Testo nero */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transizione per ingrandimento e ombreggiatura */
+    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+}
+
+.inventory-item:hover {
+    transform: scale(1.05); /* Leggera espansione */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombra più marcata */
+}
+.user-info {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info span {
+    font-size: 14px;
+    color: #000000;
+}
+
+.logout-button {
+    padding: 15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 auto; /* Centrato */
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.crea-button {
+    display: block;
+    margin: 20px auto 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.crea-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.crea-button:active {
+    background-color: #a00000;
+    transform: scale(1);
+}

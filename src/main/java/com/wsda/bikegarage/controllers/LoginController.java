@@ -46,6 +46,8 @@ public class LoginController {
         } else if (impiegato.getTipo().equals("ca")) {
             return "cassa";
         } else if (impiegato.getTipo().equals("mg")) {
+            model.addAttribute("impiegato", impiegato);
+            model.addAttribute("ricambi", loginService.getAllRicambi().stream().toList());
             return "magazzino";
         }
         return "index";

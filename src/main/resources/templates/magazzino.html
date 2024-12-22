@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestione Ricambi - Magazziniere</title>
     <link rel="stylesheet" href="/styles/stylesMagazzino.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/imgs/logo.png">
 </head>
 <body>
     <!-- Topbar -->
@@ -13,6 +15,12 @@
             <img src="/imgs/logo.png" alt="Logo Officina">
         </div>
         <h1 class="garage-title">Bike <span>Garage</span></h1>
+        <div class="user-info" th:if="${impiegato != null}">
+            <span th:text="${impiegato.getNome() + ' ' +impiegato.getCognome()}"></span>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
     </div>
 
     <!-- Contenuto Principale -->
@@ -20,50 +28,35 @@
         <!-- Sezione Archivio Ricambi -->
         <div class="inventory-section">
             <h2>Archivio Ricambi</h2>
+            <button class="crea-button" id="crea-ricambio">Aggiungi nuovo ricambio</button>
             <ul class="inventory-list">
-                <li class="inventory-item">
-                    <span><strong>Nome:</strong> Freno Anteriore</span>
-                    <span><strong>Quantità:</strong> 10</span>
-                    <span><strong>Prezzo:</strong> €50</span>
+                <li th:each="ricambio : ${ricambi}" class="inventory-item" th:id="${ricambio.id}">
+                    <span th:utext="'<strong>Nome:</strong> ' + ${ricambio.getNome()}"></span>
+                    <span th:utext="'<strong>Quantità:</strong> ' + ${ricambio.getQuantita()}"></span>
+                    <span th:utext="'<strong>Prezzo:</strong> ' + ${ricambio.getPrezzo()} +'€'"></span>
                 </li>
-                <li class="inventory-item">
-                    <span><strong>Nome:</strong> Olio Motore</span>
-                    <span><strong>Quantità:</strong> 5</span>
-                    <span><strong>Prezzo:</strong> €25</span>
-                </li>
-                <!-- Altri ricambi aggiunti dinamicamente -->
             </ul>
         </div>
 
         <!-- Sezione Aggiunta Ricambi -->
-        <div class="add-part-section">
+        <div class="add-part-section" style="display: none;">
             <h2>Aggiungi Ricambio</h2>
             <div class="form-group">
-                <input type="text" id="part_name" placeholder="Nome Ricambio" required>
+                <input type="text" id="part_id" placeholder="Codice Ricambio" readonly>
             </div>
             <div class="form-group">
-                <input type="number" id="part_quantity" placeholder="Quantità" required>
+                <input type="text" id="part_name" placeholder="Nome Ricambio" readonly>
             </div>
             <div class="form-group">
-                <input type="number" id="part_price" placeholder="Prezzo (€)" required>
+                <input type="number" id="part_quantity" value="1" step="5" placeholder="Quantità da ordinare" required>
             </div>
-            <button class="add-part" onclick="addPart()">Aggiungi Ricambio</button>
+            <div class="form-group">
+                <input type="number" id="part_price" placeholder="Prezzo (€)" readonly>
+            </div>
+            <button id="add-button" class="add-part">Aggiungi Ricambio</button>
+            <button id="add-button-ricambio" class="add-part">Aggiungi Nuovo Ricambio</button>
         </div>
     </div>
-
-    <script>
-        function addPart() {
-            const name = document.getElementById('part_name').value;
-            const quantity = document.getElementById('part_quantity').value;
-            const price = document.getElementById('part_price').value;
-
-            if (name && quantity && price) {
-                alert(`Ricambio aggiunto: ${name}, Quantità: ${quantity}, Prezzo: €${price}`);
-                // Logica per aggiornare l'elenco dei ricambi.
-            } else {
-                alert('Compila tutti i campi!');
-            }
-        }
-    </script>
+<script src="/scripts/magazzino.js"></script>
 </body>
 </html>
