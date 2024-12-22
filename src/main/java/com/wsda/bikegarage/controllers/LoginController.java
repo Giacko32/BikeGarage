@@ -4,7 +4,6 @@ import com.wsda.bikegarage.entities.Riparazione;
 import com.wsda.bikegarage.entities.Cliente;
 import com.wsda.bikegarage.security.MyUserDetails;
 import com.wsda.bikegarage.services.LoginService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,11 +18,16 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping("/loginSuccesful")
+    @GetMapping("/loginDone")
     public String login(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        MyUserDetails user = ((MyUserDetails) auth.getPrincipal());
-        Impiegato impiegato = loginService.getImpiegato(user.getUsername(), user.getPassword());
+        Impiegato impiegato;
+        try {
+            MyUserDetails user = ((MyUserDetails) auth.getPrincipal());
+            impiegato = loginService.getImpiegato(user.getUsername(), user.getPassword());
+        }catch (ClassCastException e){
+            impiegato = null;
+        }
         model.addAttribute("impiegato", impiegato);
         if (impiegato == null) {
             model.addAttribute("error", true);
@@ -44,6 +48,7 @@ public class LoginController {
         } else if (impiegato.getTipo().equals("mg")) {
             return "magazzino";
         }
-        return "accettazione";
+        return "index";
     }
+
 }

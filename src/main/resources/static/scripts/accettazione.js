@@ -63,8 +63,18 @@ $(document).ready(function () {
     })
 
     $(".user-row").click(function (){
+        $("#motoTable").find(".user-row").remove()
         $.get("/accettazione/motoById", {"id": $(this).attr("id")}, function (data) {
-            console.log(data);
+            data.forEach(function (element) {
+                const new_row = $("<tr></tr>")
+                new_row.addClass("user-row")
+                const targa_td = $("<td></td>").text(element.targa)
+                const marca_td = $("<td></td>").text(element.marca)
+                const modello_td = $("<td></td>").text(element.modello)
+                new_row.append(targa_td, marca_td, modello_td)
+                $("#motoTable").append(new_row)
+            })
+
         })
     })
 })

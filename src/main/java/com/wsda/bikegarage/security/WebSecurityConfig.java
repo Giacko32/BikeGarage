@@ -1,13 +1,9 @@
 package com.wsda.bikegarage.security;
 
-import com.wsda.bikegarage.repositories.ImpiegatoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,13 +28,15 @@ public class WebSecurityConfig {
                                 .requestMatchers("/magazzino").hasAuthority("mg")
                                 .requestMatchers("/statoriparazione").permitAll()
                                 .anyRequest().permitAll())
+                .exceptionHandling(exception -> exception.accessDeniedPage("/accessDenied"))
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/loginSuccesful")
+                        .defaultSuccessUrl("/loginDone")
+                        .failureUrl("/loginDone")
                         .permitAll())
-                .logout((logout) -> logout.permitAll()).csrf(csrf -> csrf.disable()).userDetailsService(userDetailsService);
+                .logout((logout) -> logout.permitAll().logoutSuccessUrl("/")).csrf(csrf -> csrf.disable()).userDetailsService(userDetailsService);
         ;
 
         return http.build();
