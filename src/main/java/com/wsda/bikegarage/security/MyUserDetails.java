@@ -15,7 +15,14 @@ public class MyUserDetails implements UserDetails {
     private Impiegato impiegato;
 
     public MyUserDetails(Impiegato impiegato) {
-        this.impiegato = impiegato;
+        if(impiegato != null) {
+            this.impiegato = impiegato;
+        } else {
+            this.impiegato = new Impiegato();
+            this.impiegato.setUsername("");
+            this.impiegato.setPassword("");
+            this.impiegato.setId(-1);
+        }
     }
 
     @Override
