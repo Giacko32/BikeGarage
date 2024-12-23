@@ -32,6 +32,7 @@ public class LoginController {
                 List<Riparazione> riparazioniMie = loginService.getAllRiparazioneMie(impiegato.getId()).stream().toList();
                 model.addAttribute("riparazioni", riparazioni);
                 model.addAttribute("riparazioniMie", riparazioniMie);
+                model.addAttribute("ricambi",loginService.getAllRicambi().stream().toList());
                 return "meccanico";
             }
             case "ac" -> {

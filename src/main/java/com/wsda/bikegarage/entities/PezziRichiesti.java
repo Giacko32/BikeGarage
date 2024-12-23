@@ -3,54 +3,53 @@ package com.wsda.bikegarage.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "pezzi_richiesti", schema = "bikegarage")
+@Table(name = "pezzi_richiesti")
 public class PezziRichiesti {
-    @EmbeddedId
-    private PezziRichiestiId id;
+    @Id
+    @Column(name = "id_pezric", nullable = false)
+    private Integer id;
 
-    @MapsId("idRicambio")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_ricambio", nullable = false)
-    private com.wsda.bikegarage.entities.Ricambi idRicambio;
+    @Column(name = "quantita", nullable = false)
+    private Integer quantita;
 
-    @MapsId("idRiparazione")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_riparazione", nullable = false)
-    private com.wsda.bikegarage.entities.Riparazione idRiparazione;
+    private Riparazione idRiparazione;
 
-    @Column(name = "`quantità`", nullable = false)
-    private Integer quantità;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_ricambio", nullable = false)
+    private Ricambi idRicambio;
 
-    public PezziRichiestiId getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(PezziRichiestiId id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public com.wsda.bikegarage.entities.Ricambi getIdRicambio() {
-        return idRicambio;
+    public Integer getQuantita() {
+        return quantita;
     }
 
-    public void setIdRicambio(com.wsda.bikegarage.entities.Ricambi idRicambio) {
-        this.idRicambio = idRicambio;
+    public void setQuantita(Integer quantita) {
+        this.quantita = quantita;
     }
 
-    public com.wsda.bikegarage.entities.Riparazione getIdRiparazione() {
+    public Riparazione getIdRiparazione() {
         return idRiparazione;
     }
 
-    public void setIdRiparazione(com.wsda.bikegarage.entities.Riparazione idRiparazione) {
+    public void setIdRiparazione(Riparazione idRiparazione) {
         this.idRiparazione = idRiparazione;
     }
 
-    public Integer getQuantità() {
-        return quantità;
+    public Ricambi getIdRicambio() {
+        return idRicambio;
     }
 
-    public void setQuantità(Integer quantità) {
-        this.quantità = quantità;
+    public void setIdRicambio(Ricambi idRicambio) {
+        this.idRicambio = idRicambio;
     }
 
 }

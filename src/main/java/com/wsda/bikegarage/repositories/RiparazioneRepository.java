@@ -13,4 +13,5 @@ public interface RiparazioneRepository extends CrudRepository<Riparazione, Integ
     Collection<Riparazione> findRiparazioneByStato(String stato);
     Collection<Riparazione> findRiparazioneByIdMeccanicoAndStato(Impiegato idMeccanico, String stato);
     Riparazione findRiparazioneByIdAndTarga(Integer id, Moto targa);
+
 }

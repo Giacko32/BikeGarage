@@ -32,7 +32,7 @@
         <div class="vehicle-list-section">
             <h2>Moto in Attesa</h2>
             <ul class="vehicle-list" id="vehicle-list">
-                <li th:each="riparazione : ${riparazioni}" th:id="${riparazione.getId()} "class="vehicle-item">
+                <li th:each="riparazione : ${riparazioni}" th:id="${riparazione.getId()} " class="vehicle-item">
                     <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
                     <span>Stato: <strong>In attesa</strong></span>
                 </li>
@@ -44,6 +44,8 @@
                 <li th:each="riparazione : ${riparazioniMie}" th:id="${riparazione.getId()}" class="vehicle-item-lav">
                     <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
                     <span>Stato: <strong>In lavorazione</strong></span>
+                    <span th:text="${riparazione.getLavorazioni()}" style="display: none"></span>
+                    <span th:text="${riparazione.getOre()}" style="display: none"></span>
                 </li>
             </ul>
         </div>
@@ -68,6 +70,7 @@
                     </select>
                 </div>
                 <button class="update-vehicle" id="update-vehicle">Aggiorna</button>
+                <button class="update-vehicle" id="update-vehicle-lav">Aggiorna</button>
             </div>
             <div id="noVehicleSelected">
                 <p>Seleziona una moto per visualizzarne i dettagli e aggiornare lo stato.</p>
@@ -78,9 +81,10 @@
         <div class="add-part-section" style="display: none;">
             <h2>Pezzi Utilizzati</h2>
             <div class="form-group">
+                <ul id="parts_list"></ul>
                 <label for="parts_used" style="color: black">Seleziona Ricambi:</label>
                 <select id="parts_used" multiple>
-                    <option th:each="ricambio : ${ricambi}" th:value="${ricambio.getId()}" th:text="${ricambio.getNome()} + ' (€ ' + ${ricambio.getPrezzo()}+')' "></option>
+                    <option th:each="ricambio : ${ricambi}" th:if="${ricambio.getQuantita()>0}" th:value="${ricambio.getId()}" th:text="${ricambio.getNome()} + ' (€ ' + ${ricambio.getPrezzo()}+')' "></option>
                 </select>
             </div>
             <div class="form-group">
