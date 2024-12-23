@@ -41,7 +41,7 @@ public class LoginService {
     }
 
 
-    public Collection<Riparazione> getAllRiparazioneAttesa() {return riparazioneRepository.findRiparazioneByStato("Attesa");}
+    public Collection<Riparazione> getAllRiparazioneAttesa() {return riparazioneRepository.findRiparazioneByStato("In attesa");}
 
     public Collection<Riparazione> getAllRiparazioneMie(int id) {
         Impiegato impiegato=new Impiegato();

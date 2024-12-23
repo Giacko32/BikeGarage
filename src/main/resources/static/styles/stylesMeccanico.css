@@ -155,12 +155,12 @@ body {
 
 /* Stile per la sezione di aggiunta pezzi */
 .add-part-section {
-    background-color: #fff5e1; /* Colore panna */
-    color: #000; /* Testo nero */
+    background-color: #fff5e1;
+    width: 45%; /* Colore panna */
+    color: #ff0000; /* Testo nero */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombreggiatura */
-    margin-top: 20px; /* Distacco dalla sezione precedente */
 }
 
 .add-part-section h3 {
@@ -218,3 +218,78 @@ body {
     }
 }
 
+.user-info {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info span {
+    font-size: 14px;
+    color: #000000;
+}
+
+.logout-button {
+    padding: 15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 auto; /* Centrato */
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+/* Stile per il Select */
+select {
+    background-color: #fff5e1; /* Sfondo panna */
+    border: 2px solid #000; /* Bordo nero */
+    color: #000; /* Testo nero */
+    font-size: 16px; /* Dimensione testo */
+    font-weight: bold; /* Testo in grassetto */
+    border-radius: 10px; /* Bordi smussati */
+    cursor: pointer; /* Icona di clic */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombreggiatura */
+    appearance: none; /* Rimuove lo stile nativo */
+    -webkit-appearance: none; /* Rimozione per Safari */
+    -moz-appearance: none; /* Rimozione per Firefox */
+    padding: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus {
+    border-color: #ff0000; /* Bordo rosso al focus */
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); /* Effetto glow */
+}
+
+/* Personalizzazione delle Option */
+ select option {
+    background-color: #fff5e1; /* Sfondo panna */
+    color: #000; /* Testo nero */
+    font-size: 16px; /* Dimensione testo */
+    padding: 10px; /* Spaziatura interna */
+    border-radius: 5px; /* Smussatura leggera sui bordi */
+}
+
+/* Rimuove il blu durante la selezione */
+select option:checked {
+    background-color: #ff0000; /* Sfondo rosso quando selezionata */
+    color: #fff; /* Testo bianco */
+    font-weight: bold; /* Testo in grassetto */
+}
+
+
+/* Option Hover */
+select option:hover{
+    background-color: #ff0000; /* Sfondo rosso al passaggio del mouse */
+    color: #fff; /* Testo bianco */
+    cursor: pointer; /* Icona di clic */
+}
