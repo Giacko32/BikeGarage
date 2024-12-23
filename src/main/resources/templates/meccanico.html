@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestione Riparazioni - Meccanico</title>
     <link rel="stylesheet" href="/styles/stylesMeccanico.css">
+    <link rel="icon" type="image/x-icon" href="/imgs/logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
@@ -15,6 +17,13 @@
             <img src="/imgs/logo.png" alt="Logo Officina">
         </div>
         <h1 class="garage-title">Bike <span>Garage</span></h1>
+        <div class="user-info" th:if="${impiegato != null}">
+            <span th:text="${impiegato.getNome() + ' ' +impiegato.getCognome()}"></span>
+            <span th:text="${impiegato.getId()}" style="display: none;" id="ImpId"></span>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
     </div>
 
     <!-- Contenuto Principale -->
@@ -22,17 +31,17 @@
         <!-- Sezione Elenco Moto -->
         <div class="vehicle-list-section">
             <h2>Moto in Attesa</h2>
-            <ul class="vehicle-list">
-                <li th:each="riparazione : ${riparazioni}" th:class="vehicle-item">
+            <ul class="vehicle-list" id="vehicle-list">
+                <li th:each="riparazione : ${riparazioni}" th:id="${riparazione.getId()} "class="vehicle-item">
                     <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
-                    <span>Stato: <strong>Attesa</strong></span>
+                    <span>Stato: <strong>In attesa</strong></span>
                 </li>
             </ul>
         </div>
         <div class="vehicle-list-section">
-            <h2>Le moto a cui stai lavorando</h2>
-            <ul class="vehicle-list">
-                <li th:each="riparazione : ${riparazioniMie}" th:class="vehicle-item-lav">
+            <h2>Moto a cui stai lavorando</h2>
+            <ul class="vehicle-list" id="vehicle-list-mine">
+                <li th:each="riparazione : ${riparazioniMie}" th:id="${riparazione.getId()}" class="vehicle-item-lav">
                     <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
                     <span>Stato: <strong>In lavorazione</strong></span>
                 </li>
@@ -45,21 +54,20 @@
             <div id="selectedVehicle" style="display: none;">
                 <p><strong>Targa:</strong> <span id="vehiclePlate"></span></p>
                 <p><strong>Stato Attuale:</strong> <span id="currentState"></span></p>
-                <div class="form-group">
+                <div class="form-group" id="work_note">
                     <textarea name="work_notes" id="work_notes" placeholder="Annotazioni sulle lavorazioni"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="work_hour">
                     <input type="number" name="work_hours" id="work_hours" placeholder="Ore Lavorate" min="0"
                         step="0.5">
                 </div>
                 <div class="form-group">
                     <label for="new_status">Modifica Stato:</label>
                     <select id="new_status">
-                        <option value="in lavorazione">In lavorazione</option>
-                        <option value="completata">Completata</option>
+                        <option value="In lavorazione">In lavorazione</option>
                     </select>
                 </div>
-                <button class="update-vehicle" onclick="updateVehicle()">Aggiorna</button>
+                <button class="update-vehicle" id="update-vehicle">Aggiorna</button>
             </div>
             <div id="noVehicleSelected">
                 <p>Seleziona una moto per visualizzarne i dettagli e aggiornare lo stato.</p>
@@ -70,11 +78,9 @@
         <div class="add-part-section" style="display: none;">
             <h2>Pezzi Utilizzati</h2>
             <div class="form-group">
-                <label for="parts_used">Seleziona Ricambi:</label>
+                <label for="parts_used" style="color: black">Seleziona Ricambi:</label>
                 <select id="parts_used" multiple>
-                    <option value="Freno Anteriore">Freno Anteriore (€50)</option>
-                    <option value="Olio Motore">Olio Motore (€25)</option>
-                    <!-- Altri ricambi dinamici -->
+                    <option th:each="ricambio : ${ricambi}" th:value="${ricambio.getId()}" th:text="${ricambio.getNome()} + ' (€ ' + ${ricambio.getPrezzo()}+')' "></option>
                 </select>
             </div>
             <div class="form-group">
@@ -82,6 +88,7 @@
             </div>
         </div>
     </div>
+    <script src="/scripts/meccanico.js"></script>
 </body>
 
 </html>

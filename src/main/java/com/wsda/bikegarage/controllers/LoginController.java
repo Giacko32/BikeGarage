@@ -35,6 +35,7 @@ public class LoginController {
         } else if (impiegato.getTipo().equals("mc")) {
             List<Riparazione> riparazioni = loginService.getAllRiparazioneAttesa().stream().toList();
             List<Riparazione> riparazioniMie = loginService.getAllRiparazioneMie(impiegato.getId()).stream().toList();
+            model.addAttribute("ricambi", loginService.getAllRicambi().stream().toList());
             model.addAttribute("riparazioni", riparazioni);
             model.addAttribute("riparazioniMie", riparazioniMie);
             return "meccanico";
