@@ -2,8 +2,10 @@ package com.wsda.bikegarage.services;
 
 import com.wsda.bikegarage.entities.Cliente;
 import com.wsda.bikegarage.entities.Moto;
+import com.wsda.bikegarage.entities.Riparazione;
 import com.wsda.bikegarage.repositories.ClienteRepository;
 import com.wsda.bikegarage.repositories.MotoRepository;
+import com.wsda.bikegarage.repositories.RiparazioneRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +21,12 @@ public class AccettazioneService {
 
     @Autowired
     private MotoRepository motoRepository;
+    @Autowired
+    private RiparazioneRepository riparazioneRepository;
 
     public Cliente registraCliente(Cliente cliente) {
         if (clienteRepository.findClienteByEmail(cliente.getEmail()) == null) {
             Cliente cliente1 = clienteRepository.save(cliente);
-            System.out.println("Cliente registrato: " + cliente);
             return cliente1;
         } else {
             Cliente clienteError = new Cliente();
@@ -36,6 +39,14 @@ public class AccettazioneService {
         Cliente cliente = new Cliente();
         cliente.setId(id);
         return motoRepository.findByIdCliente(cliente);
+    }
+
+    public Moto registraMoto(Moto moto) {
+        return motoRepository.save(moto);
+    }
+
+    public Riparazione registraRiparazione(Riparazione r) {
+        return riparazioneRepository.save(r);
     }
 }
 

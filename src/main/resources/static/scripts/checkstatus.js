@@ -3,7 +3,8 @@ $(document).ready(function () {
         $(".dettagli").remove()
         const targa=$("#targa").val().trim().toUpperCase()
         const codice=$("#code").val().trim().toUpperCase()
-        if (targa.length >0 && codice.length > 0){
+        const targa_regex = /^[A-Z]{2}[0-9]{5}$/
+        if (targa.length >0 && codice.length > 0 && targa_regex.test(targa)) {
         $.get("checkStatus",{"targa":targa,"code":codice},function (data) {
            if (data.id === 0){
                $(".error-message").show()
@@ -37,7 +38,7 @@ $(document).ready(function () {
            }
         });
     }else{
-            alert("Campi vuoti")
+            alert("Campi vuoti o formato della targa errato")
         }
     })
 })

@@ -78,7 +78,7 @@
         </form>
     </div>
 
-    <div class="main-container">
+    <div class="main-container" id="moto-search">
         <div class="utente-form-section">
             <h2>Moto del cliente</h2>
             <button class="crea-button" id="crea-moto">Aggiungi nuova moto</button>
@@ -95,7 +95,35 @@
             </form>
         </div>
     </div>
+
+    <div class="main-container utente-form-section" id="add-moto">
+        <h2>Registrazione Nuova Moto</h2>
+        <form class="registration-form">
+            <div class="form-group">
+                <label for="targa">Targa:</label>
+                <input type="text" id="targa" name="targa" placeholder="Inserisci la targa" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" placeholder="Inserisci la marca" required>
+            </div>
+            <div class="form-group">
+                <label for="modello">Modello:</label>
+                <input type="text" id="modello" name="modello" placeholder="Inserisci il modello" required>
+            </div>
+            <button type="submit" id="register-moto-button" class="submit-button">Registra Moto</button>
+        </form>
+    </div>
 </div>
+
+<div id="modal">
+    <div id="modal-content" class="utente-form-section">
+        <h2>Vuoi creare una pratica di riparazione per questa moto?</h2>
+        <button id="registra-pratica" class="submit-button">Crea Pratica</button>
+        <button id="cancel-pratica" class="submit-button">Annulla</button>
+    </div>
+</div>
+
 <script src="/scripts/accettazione.js"></script>
 </body>
 </html>
