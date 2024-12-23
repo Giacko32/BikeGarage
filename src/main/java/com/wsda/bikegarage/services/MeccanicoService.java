@@ -36,18 +36,11 @@ public class MeccanicoService {
         return pezziRichiestiRepository.findPezzi_richiestiByIdRiparazione(riparazione);
     }
 
-    public Riparazione updateRiparazione(int idrip,int hours,String notes,String status,String targa,int idmec){
-        Riparazione riparazione = new Riparazione();
-        Moto moto=new Moto();
-        moto.setTarga(targa);
-        Impiegato impiegato = new Impiegato();
-        impiegato.setId(idmec);
-        riparazione.setId(idrip);
+    public Riparazione updateRiparazione(int idrip,int hours,String notes,String status){
+        Riparazione riparazione = riparazioneRepository.findById(idrip);
         riparazione.setStato(status);
         riparazione.setLavorazioni(notes);
         riparazione.setOre(hours);
-        riparazione.setIdMeccanico(impiegato);
-        riparazione.setTarga(moto);
         return riparazioneRepository.save(riparazione);
     }
 

@@ -46,7 +46,7 @@ $(document).ready(function(){
         $("#work_hour").show()
         $("#work_note").show()
         $("#update-vehicle").hide()
-        $("#work_notes").show().text($(this).find("span").eq(2).text());
+        $("#work_notes").show().val($(this).find("span").eq(2).text());
         $("#work_hours").show().val($(this).find("span").eq(3).text()).attr("min",$(this).find("span").eq(3).text());
         $("#update-vehicle-lav").show()
         $("#vehiclePlate").text($(this).find("span").eq(0).text().replace("Targa: ","")).attr("idrip",$(this).attr("id"));
@@ -76,21 +76,33 @@ $(document).ready(function(){
         const status=$("#new_status").val();
         const lavorazioni=$("#work_notes").val()
         const ore=$("#work_hours").val()
-        const idmec=$("#impId").text()
-        const targa=span.text()
         // Crea un oggetto con i parametri da inviare
         var riparazioneData = {
             idRip: ripId,           // ID della riparazione
             stato: status, // Stato della riparazione
             notes: lavorazioni,  // Note sulla riparazione
             hours: ore,           // Ore impiegate per la riparazione
-            targa: targa,   // Targa del veicolo
-            idmec: idmec         // ID del meccanico
         };
-        console.log(lavorazioni,ripId,status,ore,idmec,targa);
-        $.post("meccanico/updateriparazione",{"idRip":ripId,"stato":status,"notes":lavorazioni,"hours":ore,"targa":targa,"idmec":idmec},function(riparazione){
+        $.post("meccanico/updateriparazione",riparazioneData,function(riparazione){
             alert("Riparazione aggiornata con successo")
-            console.log(riparazione);
+            $(".vehicle-item-lav").each(function(){
+                console.log(riparazione);
+                const id=parseInt($(this).attr("id"));
+                if (id===riparazione.id){
+                    $(this).find("span").eq(2).text(riparazione.lavorazioni);
+                    $(this).find("span").eq(3).text(riparazione.ore);
+                }
+            })
         })
+    })
+
+    $("#add-used-part").click(function(){
+        const pezzo=$("#parts_used").val()
+        const li=$("<li style='color: black' class='pezzi-aggiunti'></li>")
+        const quantita=$("<span></span>").html(" Quantità: <strong> "+ 1 + " </strong>" );
+        const nome=$("<span></span>").html("<strong>"+ pezzo +" </strong>");
+        li.append(nome);
+        li.append(quantita);
+        $("#parts_list_temp").append(li)
     })
 })

@@ -39,9 +39,9 @@ public class MeccanicoController {
     }
 
     @PostMapping("/updateriparazione")
-    public Riparazione updateriparazione(@RequestParam(name = "idRip")int idRip, @RequestParam(name = "stato")String stato,@RequestParam(name = "notes")String notes,@RequestParam(name = "hours")int hours,@RequestParam(name = "targa")String targa,@RequestParam(name = "idmec")int idmec) {
+    public Riparazione updateriparazione(@RequestParam(name = "idRip")int idRip, @RequestParam(name = "stato")String stato,@RequestParam(name = "notes")String notes,@RequestParam(name = "hours")int hours) {
         try{
-            return meccanicoService.updateRiparazione(idRip,hours,notes,stato,targa,idmec);
+            return meccanicoService.updateRiparazione(idRip,hours,notes,stato);
         }catch (Exception e) {
             return null;
         }
