@@ -18,6 +18,7 @@ public class RiparazioneService {
 
     @Autowired
     private RiparazioneRepository riparazioneRepository;
+
     @Autowired
     private PezziRichiestiRepository pezziRichiestiRepository;
 

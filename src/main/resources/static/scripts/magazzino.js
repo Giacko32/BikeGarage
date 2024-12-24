@@ -25,7 +25,7 @@ $(document).ready(function() {
             $(".inventory-item").each(function() {
                 const id=parseInt($(this).attr("id"));
                 if(id===ricambio.id){
-                    $(this).find("span").eq(1).html("<strong>Quantità:</strong> "+ ricambio.quantita);
+                    $(this).find("span").eq(1).html("<strong>Quantità:</strong> "+ ricambio.quantita + " ");
                 }
             })
             alert("Articolo aggiornato con successo")

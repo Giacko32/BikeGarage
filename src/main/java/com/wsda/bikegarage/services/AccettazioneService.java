@@ -42,7 +42,15 @@ public class AccettazioneService {
     }
 
     public Moto registraMoto(Moto moto) {
-        return motoRepository.save(moto);
+        Moto found = motoRepository.findByTarga(moto.getTarga());
+        if(found == null) {
+            return motoRepository.save(moto);
+        } else {
+            Moto m = new Moto();
+            m.setTarga("-1");
+            return m;
+        }
+
     }
 
     public Riparazione registraRiparazione(Riparazione r) {

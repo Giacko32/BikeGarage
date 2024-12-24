@@ -50,7 +50,7 @@ $(document).ready(function () {
                 if (data.id !== 0) {
                     const new_row = $("<tr></tr>")
                     new_row.addClass("user-row")
-                    new_row.id = data.id;
+                    new_row.attr("id", data.id);
                     const name_td = $("<td></td>").text(data.nome)
                     const cognome_td = $("<td></td>").text(data.cognome)
                     const email_td = $("<td></td>").text(data.email)
@@ -107,8 +107,12 @@ $(document).ready(function () {
                 "modello": modello,
                 "id": id_utente_current
             }, data => {
-                alert("Moto registrata con successo")
-                addMotoRow(data)
+                if(data.targa !== "-1"){
+                    alert("Moto registrata con successo")
+                    addMotoRow(data)
+                } else {
+                    alert("Targa già registrata")
+                }
                 $("#add-moto").hide()
                 $("#moto-search").show()
             })
