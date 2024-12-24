@@ -3,29 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricerca Riparazione</title>
+    <title>Cassa</title>
     <link rel="stylesheet" href="/styles/stylesCassiere.css">
+    <link rel="icon" type="image/x-icon" href="/imgs/logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
 <body>
-    <!-- Topbar -->
-    <div class="topbar">
-        <div class="logo-small">
-            <img src="/imgs/logo.png" alt="Logo Officina">
-        </div>
-        <h1 class="garage-title"><span>Officina</span> Bike Garage</h1>
+<!-- Topbar -->
+<div class="topbar">
+    <div class="logo-small">
+        <img src="/imgs/logo.png" alt="Logo Officina">
     </div>
+    <h1 class="garage-title"><span>Officina</span> Bike Garage</h1>
+    <div class="user-info" th:if="${impiegato != null}">
+        <span th:text="${impiegato.getNome() + ' ' +impiegato.getCognome()}"></span>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+</div>
 
-    <!-- Contenitore Principale -->
-    <div class="main-container">
-        <!-- Sezione di Ricerca -->
-        <div class="repair-search-section">
-            <h2>Ricerca Riparazioni</h2>
-            <div class="form-group">
-                <input type="text" id="repair-code" placeholder="Inserisci Codice Riparazione" required>
-                <button class="search-repair">Cerca</button>
-            </div>
+<!-- Contenitore Principale -->
+<div class="main-container">
+    <!-- Sezione di Ricerca -->
+    <div class="repair-search-section">
+        <h2>Ricerca Riparazioni</h2>
+        <div class="form-group">
+            <input type="text" id="repair-code" placeholder="Inserisci Codice Riparazione" required>
+            <button class="search-repair">Cerca</button>
         </div>
     </div>
+</div>
+<div id="modal">
+    <div id="askmodal" class="utente-form-section modal-content">
+        <h2>Riparazione individuata, procedere al pagamento?</h2>
+        <button id="pagamento" class="submit-button">Pagamento</button>
+        <button id="cancel-pagamento" class="submit-button">Annulla</button>
+    </div>
+    <div id="paymodal" class="utente-form-section modal-content">
+        <h2>Pezzi utilizzati:</h2>
+        <table class="search-table" id="pezziTable">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantità</th>
+                <th>Prezzo</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <h2>Ore di lavoro (40€/h): <span id="ore"></span></h2>
+        <h2>Totale: <span id="totale"></span> €</h2>
+        <button id="confirm-pay" class="submit-button">Pagato</button>
+    </div>
+</div>
+<script src="/scripts/cassa.js"></script>
 </body>
 </html>
 

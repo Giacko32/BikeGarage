@@ -67,7 +67,8 @@ $(document).ready(function () {
         }
     })
 
-    $(".user-row").click(function () {
+
+    $("#clientTable").on("click", ".user-row", function () {
         $("#motoTable").find(".moto-row").remove()
         id_utente_current = $(this).attr("id")
         $.get("/accettazione/motoById", {"id": id_utente_current}, function (data) {
@@ -114,15 +115,15 @@ $(document).ready(function () {
         }
     })
 
-    $("#moto-search").on("click",".moto-row",function() {
+    $("#moto-search").on("click", ".moto-row", function () {
         $("#modal").show()
         targa_moto_current = $(this).attr("id")
     });
 
     $("#modal").on("click", "#registra-pratica", function () {
         $.post("/accettazione/creaRiparazione", {"targa": targa_moto_current}, function (data) {
-            if(data === true){
-                alert("Pratica creata")
+            if (data !== -1) {
+                alert("Pratica creata con codice " + data)
             } else {
                 alert("Errore Pratica")
             }

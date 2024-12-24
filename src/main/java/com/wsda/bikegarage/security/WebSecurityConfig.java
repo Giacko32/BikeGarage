@@ -25,7 +25,7 @@ public class WebSecurityConfig {
                         auth -> auth.requestMatchers("/").permitAll()
                                 .requestMatchers("/accettazione/**").hasAuthority("ac")
                                 .requestMatchers("/meccanico/**").hasAuthority("mc")
-                                .requestMatchers("/cassa").hasAuthority("ca")
+                                .requestMatchers("/cassa/**").hasAuthority("ca")
                                 .requestMatchers("/magazzino/**").hasAuthority("mg")
                                 .requestMatchers("/statoriparazione").permitAll()
                                 .anyRequest().permitAll())

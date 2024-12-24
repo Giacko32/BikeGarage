@@ -30,7 +30,6 @@ public class AccettazioneController {
         try {
             cliente = accettazioneService.registraCliente(cliente);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return null;
         }
         return cliente;
@@ -62,7 +61,7 @@ public class AccettazioneController {
     }
 
     @PostMapping("/creaRiparazione")
-    public boolean creaRiparazione(@RequestParam(name = "targa", required = true) String targa) {
+    public int creaRiparazione(@RequestParam(name = "targa", required = true) String targa) {
         System.out.println(targa);
         Riparazione rip = new Riparazione();
         Moto moto = new Moto();
@@ -72,10 +71,9 @@ public class AccettazioneController {
         rip.setLavorazioni("");
         rip.setStato("In attesa");
         try{
-            accettazioneService.registraRiparazione(rip);
-            return true;
+            return accettazioneService.registraRiparazione(rip).getId();
         } catch (Exception e){
-            return false;
+            return -1;
         }
     }
 
