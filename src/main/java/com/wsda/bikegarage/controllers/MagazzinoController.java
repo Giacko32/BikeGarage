@@ -1,9 +1,8 @@
 package com.wsda.bikegarage.controllers;
 
 import com.wsda.bikegarage.entities.Ricambi;
-import com.wsda.bikegarage.services.MagazzinoService;
+import com.wsda.bikegarage.services.RicambiService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 public class MagazzinoController {
 
     @Autowired
-    private MagazzinoService magazzinoService;
+    private RicambiService ricambiService;
+
 
     @GetMapping("/aggiungi")
     public Ricambi aggiungi(@RequestParam(name = "id") int id, @RequestParam(name = "quantity") int quantita) {
         Ricambi ricambio;
         try {
-            ricambio = magazzinoService.orderRicambi(id, quantita);
+            ricambio = ricambiService.orderRicambi(id, quantita);
         } catch (Exception e) {
             return null;
         }
@@ -37,6 +37,6 @@ public class MagazzinoController {
         ricambio.setQuantita(quantita);
         ricambio.setNome(nome);
         ricambio.setPrezzo(price);
-        return magazzinoService.addnewRicambio(ricambio);
+        return ricambiService.addnewRicambio(ricambio);
     }
 }

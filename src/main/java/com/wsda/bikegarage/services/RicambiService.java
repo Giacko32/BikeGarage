@@ -6,9 +6,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 @Transactional
-public class MagazzinoService {
+public class RicambiService {
 
     @Autowired
     private RicambiRepository ricambiRepository;
@@ -31,5 +33,9 @@ public class MagazzinoService {
             temp.setId(0);
             return temp;
         }
+    }
+
+    public Collection<Ricambi> getAllRicambi() {
+        return ricambiRepository.findAll();
     }
 }

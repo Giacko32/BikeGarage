@@ -3,10 +3,10 @@ package com.wsda.bikegarage.controllers;
 import com.wsda.bikegarage.entities.Cliente;
 import com.wsda.bikegarage.entities.Moto;
 import com.wsda.bikegarage.entities.Riparazione;
-import com.wsda.bikegarage.repositories.MotoRepository;
-import com.wsda.bikegarage.services.AccettazioneService;
+import com.wsda.bikegarage.services.ClienteService;
+import com.wsda.bikegarage.services.MotoService;
+import com.wsda.bikegarage.services.RiparazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -16,7 +16,11 @@ import java.util.Collection;
 public class AccettazioneController {
 
     @Autowired
-    private AccettazioneService accettazioneService;
+    private ClienteService clienteService;
+    @Autowired
+    private MotoService motoService;
+    @Autowired
+    private RiparazioneService riparazioneService;
 
     @PostMapping("/registra")
     public Cliente registraCliente(@RequestParam(name = "nome", required = true) String nome, @RequestParam(name = "cognome", required = true) String cognome, @RequestParam(name = "email", required = true) String email) {
@@ -28,7 +32,7 @@ public class AccettazioneController {
         cliente.setCognome(cognome);
         cliente.setEmail(email);
         try {
-            cliente = accettazioneService.registraCliente(cliente);
+            cliente = clienteService.registraCliente(cliente);
         } catch (Exception e) {
             return null;
         }
@@ -38,7 +42,7 @@ public class AccettazioneController {
     @GetMapping("/motoById")
     public Collection<Moto> motoById(@RequestParam(name = "id", required = true) int id) {
         try {
-            return accettazioneService.getMotoById(id);
+            return motoService.getMotoById(id);
         } catch (Exception e) {
             return null;
         }
@@ -54,7 +58,7 @@ public class AccettazioneController {
         c.setId(id);
         moto.setIdCliente(c);
         try {
-            return accettazioneService.registraMoto(moto);
+            return motoService.registraMoto(moto);
         }catch (Exception e) {
             return null;
         }
@@ -71,7 +75,7 @@ public class AccettazioneController {
         rip.setLavorazioni("");
         rip.setStato("In attesa");
         try{
-            return accettazioneService.registraRiparazione(rip).getId();
+            return riparazioneService.registraRiparazione(rip).getId();
         } catch (Exception e){
             return -1;
         }

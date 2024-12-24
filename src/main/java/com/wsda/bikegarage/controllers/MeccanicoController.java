@@ -2,7 +2,8 @@ package com.wsda.bikegarage.controllers;
 
 import com.wsda.bikegarage.entities.PezziRichiesti;
 import com.wsda.bikegarage.entities.Riparazione;
-import com.wsda.bikegarage.services.MeccanicoService;
+import com.wsda.bikegarage.services.PezziRichiestiService;
+import com.wsda.bikegarage.services.RiparazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,14 @@ import java.util.Collection;
 public class MeccanicoController {
 
     @Autowired
-    private MeccanicoService meccanicoService;
-
-
+    private RiparazioneService riparazioneService;
+    @Autowired
+    private PezziRichiestiService pezziRichiestiService;
 
     @PostMapping("/aggiornastato")
     public Riparazione aggiornaStato(@RequestParam(name = "mecId")int mecId, @RequestParam(name = "stato")String stato,@RequestParam(name = "ripId")int ripId) {
         try {
-            return meccanicoService.setNewStatus(mecId, ripId, stato);
+            return riparazioneService.setNewStatus(mecId, ripId, stato);
         }catch (Exception e) {
             Riparazione riparazione = new Riparazione();
             riparazione.setId(-1);
@@ -33,7 +34,7 @@ public class MeccanicoController {
     @GetMapping("/getPezzi")
     public Collection<PezziRichiesti> getPezzi(@RequestParam(name = "idRip")int idRip) {
         try{
-            return meccanicoService.getPezziRichiestiByriparazione(idRip);
+            return pezziRichiestiService.getPezziRichiestiByriparazione(idRip);
         } catch (Exception e) {
             return null;
         }
@@ -42,7 +43,7 @@ public class MeccanicoController {
     @PostMapping("/updateriparazione")
     public Riparazione updateriparazione(@RequestParam(name = "idRip")int idRip, @RequestParam(name = "stato")String stato,@RequestParam(name = "notes")String notes,@RequestParam(name = "hours")int hours) {
         try{
-            return meccanicoService.updateRiparazione(idRip,hours,notes,stato);
+            return riparazioneService.updateRiparazione(idRip,hours,notes,stato);
         }catch (Exception e) {
             return null;
         }
@@ -52,7 +53,8 @@ public class MeccanicoController {
     public ResponseEntity<String> aggiungipezzi(@RequestBody Collection<PezziRichiesti> lista){
         try {
             for (PezziRichiesti p : lista) {
-                meccanicoService.aggiungipezzo(p);
+                pezziRichiestiService.aggiungipezzo(p);
+                pezziRichiestiService.aggiornaMagazzino(p);
             }
             return ResponseEntity.ok("Tutti i pezzi sono stati aggiunti con successo.");
         } catch (Exception e) {

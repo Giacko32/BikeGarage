@@ -1,15 +1,18 @@
 $(document).ready(function(){
-    let id_m = 0
-    let targa = ""
-
     $(".search-repair").click(function(){
         const id = $("#repair-code").val()
         if(id !== "" && !isNaN(id)){
             $.get("/cassa/getRiparazione", {"id":id}, function(data){
                 console.log(data)
                 if(!data){
-                    alert("Nessuna riparazione completata con l'id inserito")
+                    alert("Nessuna riparazione con l'id inserito")
                 } else {
+                    $("#idspan").text(data.id)
+                    $("#targaspan").text(data.targa.targa)
+                    $("#lavorazionispan").text(data.lavorazioni)
+                    $("#orespan").text(data.ore)
+                    $("#statospan").text(data.stato)
+                    $("#meccanicospan").text(data.idMeccanico.nome + " " + data.idMeccanico.cognome)
                     $("#modal").show();
                 }
             })
@@ -21,10 +24,12 @@ $(document).ready(function(){
     })
 
     $("#pagamento").click(function(){
-        $.get("/cassa/getDatiPagamento", {"id": $("#repair-code").val()}, function(data){
+        if($("#statospan").text() === "Completata"){
+        $.get("/cassa/getDatiPagamento", {"id": $("#repair-code").val()}, function(data) {
+            console.log(data)
             let prezzo = 0;
             $("#pezziTable").find(".pezzo_row").remove();
-            data.forEach(function(element){
+            data.forEach(function (element) {
                 const new_row = $("<tr></tr>")
                 new_row.addClass("pezzo_row")
                 const nome_td = $("<td></td>").text(element.idRicambio.nome)
@@ -34,18 +39,23 @@ $(document).ready(function(){
                 new_row.append(nome_td, quantita_td, prezzo_td)
                 $("#pezziTable").append(new_row)
             })
-            $("#ore").text(data[0].idRiparazione.ore)
-            prezzo = prezzo + data[0].idRiparazione.ore*40;
-            id_m = data[0].idRiparazione.idMeccanico.id
-            targa = data[0].idRiparazione.targa.targa
+            if(data.length > 0){
+                $("#ore").text(data[0].idRiparazione.ore)
+                prezzo = prezzo + data[0].idRiparazione.ore * 40;
+            } else {
+                $("#ore").text(0)
+            }
             $("#totale").text(prezzo)
             $("#askmodal").hide()
             $("#paymodal").show()
         })
+        } else {
+            alert("La riparazione non è completata")
+        }
     })
 
     $("#confirm-pay").click(function(){
-        $.post("/cassa/pagamentoCompletato", {"id": $("#repair-code").val(), "ore":$("#ore").text(), "id_m":id_m, "targa":targa})
+        $.post("/cassa/pagamentoCompletato", {"id": $("#repair-code").val()})
         alert("Pagamento Completato")
         $("#modal").hide();
         $("#askmodal").show()

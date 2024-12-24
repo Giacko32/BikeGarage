@@ -15,7 +15,7 @@
     <div class="logo-small">
         <img src="/imgs/logo.png" alt="Logo Officina">
     </div>
-    <h1 class="garage-title"><span>Officina</span> Bike Garage</h1>
+    <h1 class="garage-title">Bike <span>Garage</span> Cassa</h1>
     <div class="user-info" th:if="${impiegato != null}">
         <span th:text="${impiegato.getNome() + ' ' +impiegato.getCognome()}"></span>
         <form th:action="@{/logout}" method="post">
@@ -37,7 +37,13 @@
 </div>
 <div id="modal">
     <div id="askmodal" class="utente-form-section modal-content">
-        <h2>Riparazione individuata, procedere al pagamento?</h2>
+        <h2>Riparazione</h2>
+        <p>Id:<span id="idspan"></span></p>
+        <p>Targa della moto: <span id="targaspan"></span></p>
+        <p>Lavorazioni effettuate: <span id="lavorazionispan"></span></p>
+        <p>Ore di lavoro: <span id="orespan"></span></p>
+        <p>Stato: <span id="statospan"></span></p>
+        <p>Meccanico: <span id="meccanicospan"></span></p>
         <button id="pagamento" class="submit-button">Pagamento</button>
         <button id="cancel-pagamento" class="submit-button">Annulla</button>
     </div>

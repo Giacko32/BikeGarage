@@ -29,7 +29,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/magazzino/**").hasAuthority("mg")
                                 .requestMatchers("/statoriparazione").permitAll()
                                 .anyRequest().permitAll())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .exceptionHandling(exception -> exception.accessDeniedPage("/accessDenied"))
                 .formLogin((form) -> form
                         .loginPage("/login")

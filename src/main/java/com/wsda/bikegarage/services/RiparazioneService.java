@@ -19,30 +19,54 @@ public class RiparazioneService {
     @Autowired
     private RiparazioneRepository riparazioneRepository;
 
-    @Autowired
-    private PezziRichiestiRepository pezziRichiestiRepository;
 
     public Riparazione getRiparazioneById(int id) {
-        return riparazioneRepository.findRiparazioneByIdAndStato(id, "Completata");
+        return riparazioneRepository.findById(id);
     }
 
-    public Collection<PezziRichiesti> getPezziRiparazione(int id) {
-        Riparazione riparazione = new Riparazione();
-        riparazione.setId(id);
-        return pezziRichiestiRepository.findPezzirichiestiByIdRiparazione(riparazione);
-    }
-
-    public void pagamentoRiparazione(int id, int ore, int id_m, String targa) {
-        Riparazione riparazione = new Riparazione();
-        riparazione.setId(id);
-        riparazione.setOre(ore);
-        Impiegato meccanico = new Impiegato();
-        meccanico.setId(id_m);
-        riparazione.setIdMeccanico(meccanico);
-        Moto moto = new Moto();
-        moto.setTarga(targa);
-        riparazione.setTarga(moto);
+    public void pagamentoRiparazione(int id) {
+        Riparazione riparazione = riparazioneRepository.findById(id);
         riparazione.setStato("Pagata");
         riparazioneRepository.save(riparazione);
+    }
+
+    public Riparazione registraRiparazione(Riparazione r) {
+        return riparazioneRepository.save(r);
+    }
+
+    public Riparazione getRiparazione(int code,String Targa){
+        Moto moto = new Moto();
+        moto.setTarga(Targa);
+        Riparazione riparazione = riparazioneRepository.findRiparazioneByIdAndTarga(code,moto);
+        if(riparazione == null){
+            riparazione = new Riparazione();
+            riparazione.setId(0);
+        }
+        return riparazione;
+    }
+
+    public Collection<Riparazione> getAllRiparazioneAttesa() {return riparazioneRepository.findRiparazioneByStato("In attesa");}
+
+    public Collection<Riparazione> getAllRiparazioneMie(int id) {
+        Impiegato impiegato=new Impiegato();
+        impiegato.setId(id);
+        return riparazioneRepository.findRiparazioneByIdMeccanicoAndStato(impiegato,"In lavorazione");
+    }
+
+    public Riparazione setNewStatus(int mec_Id,int rip_Id,String status){
+        Riparazione riparazione = riparazioneRepository.findById(rip_Id);
+        Impiegato impiegato = new Impiegato();
+        impiegato.setId(mec_Id);
+        riparazione.setIdMeccanico(impiegato);
+        riparazione.setStato(status);
+        return riparazioneRepository.save(riparazione);
+    }
+
+    public Riparazione updateRiparazione(int idrip,int hours,String notes,String status){
+        Riparazione riparazione = riparazioneRepository.findById(idrip);
+        riparazione.setStato(status);
+        riparazione.setLavorazioni(notes);
+        riparazione.setOre(hours);
+        return riparazioneRepository.save(riparazione);
     }
 }

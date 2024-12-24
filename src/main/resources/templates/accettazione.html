@@ -15,7 +15,7 @@
     <div class="logo-small">
         <img src="/imgs/logo.png" alt="Logo Officina">
     </div>
-    <h1 class="garage-title">Bike <span>Garage</span></h1>
+    <h1 class="garage-title">Bike <span>Garage</span> Accettazione</h1>
     <div class="user-info" th:if="${impiegato != null}">
         <span th:text="${impiegato.getNome() + ' ' +impiegato.getCognome()}"></span>
         <form th:action="@{/logout}" method="post">
