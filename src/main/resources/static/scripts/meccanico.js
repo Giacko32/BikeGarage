@@ -26,8 +26,11 @@ $(document).ready(function(){
                         li.attr("id",$(this).attr("id"));
                         const targa=$("<span></span>").html("Targa: <strong>"+riparazione.targa.targa+ "</strong>")
                         const stato=$("<span></span>").html("Stato: <strong>In lavorazione</strong>")
-                        li.append(targa);
-                        li.append(stato);
+                        const span1 = $("<span></span>")
+                        const span2 = $("<span></span>")
+                        span1.hide()
+                        span2.hide()
+                        li.append(targa, stato, span1, span2);
                         $("#vehicle-list-mine").append(li)
                         $(this).remove()
                     }
