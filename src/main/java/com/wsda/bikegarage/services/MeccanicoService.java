@@ -1,7 +1,6 @@
 package com.wsda.bikegarage.services;
 
 import com.wsda.bikegarage.entities.Impiegato;
-import com.wsda.bikegarage.entities.Moto;
 import com.wsda.bikegarage.entities.PezziRichiesti;
 import com.wsda.bikegarage.entities.Riparazione;
 import com.wsda.bikegarage.repositories.PezziRichiestiRepository;
@@ -33,7 +32,7 @@ public class MeccanicoService {
     public Collection<PezziRichiesti> getPezziRichiestiByriparazione(int riparazioneId){
         Riparazione riparazione =new Riparazione();
         riparazione.setId(riparazioneId);
-        return pezziRichiestiRepository.findPezzi_richiestiByIdRiparazione(riparazione);
+        return pezziRichiestiRepository.findPezzirichiestiByIdRiparazione(riparazione);
     }
 
     public Riparazione updateRiparazione(int idrip,int hours,String notes,String status){
@@ -42,6 +41,16 @@ public class MeccanicoService {
         riparazione.setLavorazioni(notes);
         riparazione.setOre(hours);
         return riparazioneRepository.save(riparazione);
+    }
+
+    public void aggiungipezzo(PezziRichiesti pezzoRichiesti){
+        PezziRichiesti temp=pezziRichiestiRepository.findPezziRichiestiByIdRicambioAndIdRiparazione(pezzoRichiesti.getIdRicambio(),pezzoRichiesti.getIdRiparazione());
+        if(temp==null){
+            pezziRichiestiRepository.save(pezzoRichiesti);
+        }else{
+            temp.setQuantita(temp.getQuantita()+pezzoRichiesti.getQuantita());
+            pezziRichiestiRepository.save(temp);
+        }
     }
 
 

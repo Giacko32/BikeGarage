@@ -6,8 +6,8 @@ $(document).ready(function() {
         var partId = $(this).attr("id");
 
         // Ottieni il nome, la quantità e il prezzo del ricambio
-        var partName = $(this).find("span").eq(0).text().replace("Nome:", "").trim(); // Usa eq(0) per il primo span
-        var partPrice = $(this).find("span").eq(2).text().replace("Prezzo:", "").trim().replace("€", ""); // Usa eq(2) per il terzo span
+        var partName = $(this).find("span").eq(0).text().replace("Nome:", "").trim();
+        var partPrice = $(this).find("span").eq(2).text().replace("Prezzo:", "").trim().replace("€", "");
 
         // Imposta i valori negli input del form
         $("#part_id").attr("readonly",true).val(partId);

@@ -84,7 +84,11 @@
                 <ul id="parts_list"></ul>
                 <label for="parts_used" style="color: black">Seleziona Ricambi:</label>
                 <select id="parts_used" multiple>
-                    <option th:each="ricambio : ${ricambi}" th:if="${ricambio.getQuantita()>0}" th:value="${ricambio.getId()}" th:text="${ricambio.getNome()} + ' (€ ' + ${ricambio.getPrezzo()}+')' "></option>
+                    <option th:each="ricambio : ${ricambi}" th:if="${ricambio.getQuantita()>0}"
+                            th:value="${ricambio.getId()}"
+                            th:data-quantita="${ricambio.getQuantita()}"
+                            th:text="${ricambio.getNome()} + ' (€ ' + ${ricambio.getPrezzo()}+')' ">
+                    </option>
                 </select>
             </div>
             <div class="form-group">

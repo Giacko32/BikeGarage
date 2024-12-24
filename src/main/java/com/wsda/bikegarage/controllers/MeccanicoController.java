@@ -2,9 +2,10 @@ package com.wsda.bikegarage.controllers;
 
 import com.wsda.bikegarage.entities.PezziRichiesti;
 import com.wsda.bikegarage.entities.Riparazione;
-import com.wsda.bikegarage.repositories.RiparazioneRepository;
 import com.wsda.bikegarage.services.MeccanicoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -45,5 +46,19 @@ public class MeccanicoController {
         }catch (Exception e) {
             return null;
         }
+    }
+
+    @PostMapping("/aggiungipezzi")
+    public ResponseEntity<String> aggiungipezzi(@RequestBody Collection<PezziRichiesti> lista){
+        try {
+            for (PezziRichiesti p : lista) {
+                meccanicoService.aggiungipezzo(p);
+            }
+            return ResponseEntity.ok("Tutti i pezzi sono stati aggiunti con successo.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Errore durante l'aggiunta dei pezzi");
+        }
+
     }
 }

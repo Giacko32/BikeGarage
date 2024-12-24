@@ -56,6 +56,108 @@ $(document).ready(function(){
             const option = $("<option id='aggiunta' value='Completata'>Completata</option>");
             list.append(option);
         }
+        getpezzi();
+        $(".add-part-section").show()
+    })
+
+    $("#update-vehicle-lav").click(function(){
+        const span=$("#vehiclePlate")
+        const ripId=span.attr("idrip");
+        const status=$("#new_status").val();
+        const lavorazioni=$("#work_notes").val()
+        const ore=$("#work_hours").val()
+        var riparazioneData = {
+            idRip: ripId,
+            stato: status,
+            notes: lavorazioni,
+            hours: ore,
+        };
+        $.post("meccanico/updateriparazione",riparazioneData,function(riparazione){
+            alert("Riparazione aggiornata con successo")
+            if (status === "Completata"){
+                $(".add-part-section").hide()
+                $("#selectedVehicle").hide()
+                $("#noVehicleSelected").show()
+                $(".vehicle-item-lav").each(function(){
+                    if ($(this).attr("id")===ripId){
+                        $(this).remove()
+                    }
+                })
+            }else {
+                $(".vehicle-item-lav").each(function () {
+                    const id = parseInt($(this).attr("id"));
+                    if (id === riparazione.id) {
+                        $(this).find("span").eq(2).text(riparazione.lavorazioni);
+                        $(this).find("span").eq(3).text(riparazione.ore);
+                    }
+                })
+            }
+        })
+        const pezzi=[]
+        $(".pezzi-aggiunti-din").each(function(){
+            pezzi.push({
+                id: null,
+                quantita: parseInt($(this).find("span").eq(1).find("strong").text().trim()),
+                idRiparazione: { id: $("#vehiclePlate").attr("idrip") },
+                idRicambio: { id: $(this).attr("id") }
+            });
+        })
+        $.ajax({
+            url: "/meccanico/aggiungipezzi",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(pezzi),
+            success: function(response) {
+                alert(response);
+                $(".pezzi-aggiunti-din").remove();
+                getpezzi();
+            },
+            error: function(err) {
+                console.error("Errore:", err);
+                alert("Errore durante l'aggiunta dei pezzi.");
+            }
+        });
+    })
+
+    $("#add-used-part").click(function () {
+        const idpezzo = $("#parts_used").val();
+        if (idpezzo[0] !== undefined) {
+            const pezzo = $("#parts_used option:selected").text();
+            let trovato = false;
+
+            $(".pezzi-aggiunti-din").each(function () {
+                const idtemp = $(this).attr("id");
+                if (idtemp === idpezzo[0]) {
+                    trovato = true;
+                    const quantitaStrong = $(this).find("span").eq(1).find("strong");
+                    let quantita = parseInt(quantitaStrong.text().trim());
+                    quantitaStrong.text(quantita + 1);
+                }
+            });
+
+            if (!trovato) {
+                const li = $("<li style='color: black' class='pezzi-aggiunti-din'></li>");
+                li.attr("id", idpezzo[0]);
+                const quantita = $("<span></span>").html(" Quantità: <strong> " + 1 + " </strong>");
+                const nome = $("<span></span>").html("<strong>" + pezzo + " </strong>");
+                li.append(nome);
+                li.append(quantita);
+                $("#parts_list_temp").append(li);
+            }
+
+            const option = $("#parts_used option:selected");
+            let currentQuantity = parseInt(option.attr("data-quantita"));
+            currentQuantity -= 1;
+
+            if (currentQuantity <= 0) {
+                option.remove();
+            } else {
+                option.attr("data-quantita", currentQuantity);
+            }
+        }
+    });
+    function getpezzi() {
+        $(".pezzi-aggiunti").remove()
         const ripId=$("#vehiclePlate").attr("idrip");
         $.get("meccanico/getPezzi",{idRip:ripId},function(collezione){
             collezione.forEach((item)=>{
@@ -67,42 +169,5 @@ $(document).ready(function(){
                 $("#parts_list").append(li)
             })
         })
-        $(".add-part-section").show()
-    })
-
-    $("#update-vehicle-lav").click(function(){
-        const span=$("#vehiclePlate")
-        const ripId=span.attr("idrip");
-        const status=$("#new_status").val();
-        const lavorazioni=$("#work_notes").val()
-        const ore=$("#work_hours").val()
-        // Crea un oggetto con i parametri da inviare
-        var riparazioneData = {
-            idRip: ripId,           // ID della riparazione
-            stato: status, // Stato della riparazione
-            notes: lavorazioni,  // Note sulla riparazione
-            hours: ore,           // Ore impiegate per la riparazione
-        };
-        $.post("meccanico/updateriparazione",riparazioneData,function(riparazione){
-            alert("Riparazione aggiornata con successo")
-            $(".vehicle-item-lav").each(function(){
-                console.log(riparazione);
-                const id=parseInt($(this).attr("id"));
-                if (id===riparazione.id){
-                    $(this).find("span").eq(2).text(riparazione.lavorazioni);
-                    $(this).find("span").eq(3).text(riparazione.ore);
-                }
-            })
-        })
-    })
-
-    $("#add-used-part").click(function(){
-        const pezzo=$("#parts_used").val()
-        const li=$("<li style='color: black' class='pezzi-aggiunti'></li>")
-        const quantita=$("<span></span>").html(" Quantità: <strong> "+ 1 + " </strong>" );
-        const nome=$("<span></span>").html("<strong>"+ pezzo +" </strong>");
-        li.append(nome);
-        li.append(quantita);
-        $("#parts_list_temp").append(li)
-    })
+    }
 })
