@@ -33,6 +33,8 @@ $(document).ready(function () {
     })
 
     $("#crea-cliente").click(function () {
+        $("#moto-search").hide()
+        $("#add-moto").hide()
         $(".registration-form-section").show()
     })
 
@@ -69,6 +71,8 @@ $(document).ready(function () {
 
 
     $("#clientTable").on("click", ".user-row", function () {
+        $(".registration-form-section").hide()
+        $("#add-moto").hide()
         $("#motoTable").find(".moto-row").remove()
         id_utente_current = $(this).attr("id")
         $.get("/accettazione/motoById", {"id": id_utente_current}, function (data) {
@@ -116,6 +120,8 @@ $(document).ready(function () {
                 $("#add-moto").hide()
                 $("#moto-search").show()
             })
+        } else {
+            alert("Campi vuoti o errati, impossibile procedere")
         }
     })
 
@@ -125,7 +131,7 @@ $(document).ready(function () {
     });
 
     $("#modal").on("click", "#registra-pratica", function () {
-        $.post("/accettazione/creaRiparazione", {"targa": targa_moto_current}, function (data) {
+        $.post("/accettazione/creaRiparazione", {"targa": targa_moto_current, "note":$("#note-bar").val()}, function (data) {
             if (data !== -1) {
                 alert("Pratica creata con codice " + data)
             } else {
@@ -135,7 +141,7 @@ $(document).ready(function () {
         })
     })
 
-    $("#modal").on("click", "#cancel-pratica", function () {
+    $("#cancel-pratica").click(function () {
         $("#modal").hide()
     })
 })

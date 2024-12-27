@@ -12,7 +12,9 @@ $(document).ready(function(){
                     $("#lavorazionispan").text(data.lavorazioni)
                     $("#orespan").text(data.ore)
                     $("#statospan").text(data.stato)
-                    $("#meccanicospan").text(data.idMeccanico.nome + " " + data.idMeccanico.cognome)
+                    if(data.idMeccanico) {
+                        $("#meccanicospan").text(data.idMeccanico.nome + " " + data.idMeccanico.cognome)
+                    }
                     $("#modal").show();
                 }
             })

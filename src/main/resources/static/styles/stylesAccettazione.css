@@ -149,7 +149,7 @@ button, input[type="submit"] {
     width: 100%; /* Assicura che la barra occupi tutto lo spazio del contenitore */
 }
 
-.search-bar input {
+.search-bar input, #note-bar {
     width: 80%; /* Mantiene l'input centrato e della giusta dimensione */
     max-width: 500px; /* Imposta una dimensione massima per input più piccolo */
     padding: 10px;
@@ -160,7 +160,7 @@ button, input[type="submit"] {
     transition: all 0.3s ease;
 }
 
-.search-bar input:focus {
+.search-bar input:focus, #note-bar:focus {
     margin: 10px auto;
     border-color: #cc0000;
     outline: none;
@@ -285,7 +285,19 @@ button, input[type="submit"] {
 }
 
 #modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 15% auto;
     width: 60%;
+}
+
+#modal-content div {
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
