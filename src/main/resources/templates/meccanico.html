@@ -35,6 +35,7 @@
                 <li th:each="riparazione : ${riparazioni}" th:id="${riparazione.getId()} " class="vehicle-item">
                     <span>Targa: <strong th:text="${riparazione.getTarga().getTarga()}"></strong></span>
                     <span>Stato: <strong>In attesa</strong></span>
+                    <span th:text="${riparazione.getNote()}" style="display: none"></span>
                 </li>
             </ul>
         </div>
@@ -46,6 +47,7 @@
                     <span>Stato: <strong>In lavorazione</strong></span>
                     <span th:text="${riparazione.getLavorazioni()}" style="display: none"></span>
                     <span th:text="${riparazione.getOre()}" style="display: none"></span>
+                    <span th:text="${riparazione.getNote()}" style="display: none"></span>
                 </li>
             </ul>
         </div>
@@ -56,6 +58,7 @@
             <div id="selectedVehicle" style="display: none;">
                 <p><strong>Targa:</strong> <span id="vehiclePlate"></span></p>
                 <p><strong>Stato Attuale:</strong> <span id="currentState"></span></p>
+                <p><strong>Note:</strong> <span id="note"></span></p>
                 <div class="form-group" id="work_note">
                     <textarea name="work_notes" id="work_notes" placeholder="Annotazioni sulle lavorazioni"></textarea>
                 </div>

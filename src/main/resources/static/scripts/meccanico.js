@@ -10,6 +10,7 @@ $(document).ready(function(){
         $("#aggiunta").remove()
         $("#vehiclePlate").text($(this).find("span").eq(0).text().replace("Targa: ","")).attr("idrip",$(this).attr("id"));
         $("#currentState").text("In attesa")
+        $("#note").text($(this).find("span").eq(2).text())
     })
 
     $("#update-vehicle").click(function(){
@@ -26,11 +27,12 @@ $(document).ready(function(){
                         li.attr("id",$(this).attr("id"));
                         const targa=$("<span></span>").html("Targa: <strong>"+riparazione.targa.targa+ "</strong>")
                         const stato=$("<span></span>").html("Stato: <strong>In lavorazione</strong>")
+                        const note=$("<span></span>").text(riparazione.note).hide()
                         const span1 = $("<span></span>")
                         const span2 = $("<span></span>")
                         span1.hide()
                         span2.hide()
-                        li.append(targa, stato, span1, span2);
+                        li.append(targa, stato, span1, span2,note);
                         $("#vehicle-list-mine").append(li)
                         $(this).remove()
                     }
@@ -51,6 +53,7 @@ $(document).ready(function(){
         $("#update-vehicle").hide()
         $("#work_notes").show().val($(this).find("span").eq(2).text());
         $("#work_hours").show().val($(this).find("span").eq(3).text()).attr("min",$(this).find("span").eq(3).text());
+        $("#note").text($(this).find("span").eq(4).text())
         $("#update-vehicle-lav").show()
         $("#vehiclePlate").text($(this).find("span").eq(0).text().replace("Targa: ","")).attr("idrip",$(this).attr("id"));
         $("#currentState").text("In lavorazione")
@@ -159,6 +162,7 @@ $(document).ready(function(){
             }
         }
     });
+
     function getpezzi() {
         $(".pezzi-aggiunti").remove()
         const ripId=$("#vehiclePlate").attr("idrip");

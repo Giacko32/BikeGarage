@@ -21,6 +21,9 @@ public class Riparazione {
     @Column(name = "Ore", nullable = false)
     private Integer ore;
 
+    @Column(name = "note",nullable = true)
+    private String note;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_meccanico")
     private Impiegato idMeccanico;
@@ -75,6 +78,14 @@ public class Riparazione {
 
     public void setTarga(Moto targa) {
         this.targa = targa;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
 }
