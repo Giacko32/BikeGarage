@@ -43,9 +43,17 @@
         <button id="sendCode" class="submit-button">Invia codice</button>
         <button id="cancel" class="submit-button">Annulla</button>
     </div>
-    <div id="password-modal" class="utente-form-section modal-content">
-        <h2>Inserisci nuova password:</h2>
+    <div id="verifica-codice-modal" class="utente-form-section modal-content">
+        <h2>Verifica codice:</h2>
+        <input id="code_field" type="password" name="password" placeholder="Codice" required>
+        <button id="checkCode" class="submit-button">Verifica codice</button>
     </div>
+    <div id="password-modal" class="utente-form-section modal-content">
+        <h2>Nuova password:</h2>
+        <input id="new_pswd_field" type="password" name="password" placeholder="Nuova Password" required>
+        <button id="setNewPassword" class="submit-button">Imposta nuova password</button>
+    </div>
+
 </div>
 <script src="/scripts/recupera_password.js"></script>
 </body>

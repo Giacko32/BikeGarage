@@ -14,6 +14,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -42,7 +45,7 @@ public class LoginController {
                 List<Riparazione> riparazioniMie = riparazioneService.getAllRiparazioneMie(impiegato.getId()).stream().toList();
                 model.addAttribute("riparazioni", riparazioni);
                 model.addAttribute("riparazioniMie", riparazioniMie);
-                model.addAttribute("ricambi",ricambiService.getAllRicambi().stream().toList());
+                model.addAttribute("ricambi", ricambiService.getAllRicambi().stream().toList());
                 return "meccanico";
             }
             case "ac" -> {
@@ -69,5 +72,21 @@ public class LoginController {
         return "index";
     }
 
+    @PostMapping("/passwordRecovery")
+    public @ResponseBody String passwordRecovery(@RequestParam(name = "email", required = true) String mail) {
+        Impiegato impiegato = impiegatoService.getImpiegatoByMail(mail);
+        if (impiegato == null) {
+            return "not found";
+        } else {
+            return impiegatoService.sendOTP(mail);
+        }
+    }
+
+    @PostMapping("/setNewPassword")
+    public @ResponseBody String setNewPassword(@RequestParam(name = "password", required = true) String password, @RequestParam(name = "mail", required = true) String mail) {
+        Impiegato impiegato = impiegatoService.getImpiegatoByMail(mail);
+        impiegatoService.setNewPasswordImpiegato(impiegato, password);
+        return "changed";
+    }
 
 }

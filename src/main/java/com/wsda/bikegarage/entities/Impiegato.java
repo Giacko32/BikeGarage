@@ -25,6 +25,9 @@ public class Impiegato {
     @Column(name = "cognome", nullable = false)
     private String cognome;
 
+    @Column(name = "mail", nullable = false)
+    private String mail;
+
     public Integer getId() {
         return id;
     }
@@ -71,6 +74,14 @@ public class Impiegato {
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
 }
