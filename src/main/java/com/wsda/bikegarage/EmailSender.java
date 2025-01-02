@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class EmailSender {
 
-    public static void sendEmailStatus(String toAddress, String message) {
+    public static void sendEmailStatus(String toAddress, String message,String targa) {
         try {
             // Imposta le proprietà SMTP
             Properties properties = new Properties();
@@ -35,7 +35,7 @@ public class EmailSender {
             msg.setRecipients(Message.RecipientType.TO, toAddresses);
             msg.setSubject("bikegageofficial@gmail.com");
             msg.setSentDate(new java.util.Date());
-            msg.setText("Ciao, abbiamo notato che hai smarrito la tua password\necco il tuo codice temporaneo: "+message);
+            msg.setText("Ciao caro Cliente\n,la tua moto con targa: "+targa+" ha cambiato stato.\nAdesso è:"+message);
             // Invia il messaggio email
             Transport.send(msg);
         } catch (MessagingException e) {

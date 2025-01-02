@@ -60,7 +60,7 @@ public class RiparazioneService {
         impiegato.setId(mec_Id);
         riparazione.setIdMeccanico(impiegato);
         riparazione.setStato(status);
-        EmailSender.sendEmailStatus("gianvitocognata999@gmail.com","suca");
+        EmailSender.sendEmailStatus(riparazione.getTarga().getIdCliente().getEmail(),status,riparazione.getTarga().getTarga());
         return riparazioneRepository.save(riparazione);
     }
 
@@ -69,6 +69,9 @@ public class RiparazioneService {
         riparazione.setStato(status);
         riparazione.setLavorazioni(notes);
         riparazione.setOre(hours);
+        if (status.equals("Completata")) {
+            EmailSender.sendEmailStatus(riparazione.getTarga().getIdCliente().getEmail(),status,riparazione.getTarga().getTarga());
+        }
         return riparazioneRepository.save(riparazione);
     }
 }
