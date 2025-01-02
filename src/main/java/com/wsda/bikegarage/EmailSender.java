@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class EmailSender {
 
-    public static void sendEmail(String toAddress, String message) {
+    public static void sendEmailStatus(String toAddress, String message) {
         try {
             // Imposta le proprietà SMTP
             Properties properties = new Properties();
@@ -25,7 +25,7 @@ public class EmailSender {
             // Crea un'autenticazione per il server SMTP
             Authenticator auth = new Authenticator() {
                 public PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("nonrisponderematchme@gmail.com", "kagi xufi xlsk zdgl");
+                    return new PasswordAuthentication("bikegageofficial@gmail.com", "ehox liab kaqg byfg");
                 }
             };
 
@@ -34,10 +34,10 @@ public class EmailSender {
 
             // Crea un nuovo messaggio email
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("nonrisponderematchme@gmail.com"));
+            msg.setFrom(new InternetAddress("bikegageofficial@gmail.com"));
             InternetAddress[] toAddresses = {new InternetAddress(toAddress)};
             msg.setRecipients(Message.RecipientType.TO, toAddresses);
-            msg.setSubject("nonrisponderematchme@gmail.com");
+            msg.setSubject("bikegageofficial@gmail.com");
             msg.setSentDate(new java.util.Date());
             msg.setText("Ciao, abbiamo notato che hai smarrito la tua password\necco il tuo codice temporaneo: "+message);
             // Invia il messaggio email
