@@ -1,5 +1,6 @@
 package com.wsda.bikegarage.services;
 
+import com.wsda.bikegarage.EmailSender;
 import com.wsda.bikegarage.entities.Impiegato;
 import com.wsda.bikegarage.entities.Moto;
 import com.wsda.bikegarage.entities.PezziRichiesti;
@@ -59,6 +60,7 @@ public class RiparazioneService {
         impiegato.setId(mec_Id);
         riparazione.setIdMeccanico(impiegato);
         riparazione.setStato(status);
+        EmailSender.sendEmailStatus("gianvitocognata999@gmail.com","suca");
         return riparazioneRepository.save(riparazione);
     }
 

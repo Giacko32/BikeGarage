@@ -22,7 +22,7 @@ public class EmailSender {
             // Crea un'autenticazione per il server SMTP
             Authenticator auth = new Authenticator() {
                 public PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("bikegageofficial@gmail.com", "ehox liab kaqg byfg");
+                    return new PasswordAuthentication("bikegageofficial@gmail.com", "ouob fdqy dhzq tmsk");
                 }
             };
 
