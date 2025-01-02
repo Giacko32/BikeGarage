@@ -90,7 +90,7 @@ body {
 }
 
 /* Messaggio Stato Riparazione */
-.status-check {
+.status-check, .forgot-password {
     margin-top: 20px;
     text-align: center;
 }
@@ -102,7 +102,7 @@ body {
     margin-bottom: 10px;
 }
 
-.status-check a {
+.status-check a, .forgot-password p {
     text-decoration: none;
     color: #ff0000;
     font-size: 16px;
@@ -110,8 +110,9 @@ body {
     transition: color 0.3s;
 }
 
-.status-check a:hover {
+.status-check a:hover, .forgot-password p:hover {
     color: #cc0000; /* Rosso scuro */
+    cursor: pointer;
 }
 
 /* Animazioni */

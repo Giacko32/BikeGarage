@@ -26,9 +26,39 @@
             Username o password invalidi
         </div>
     </form>
+    <div class="forgot-password">
+        <p>Password dimenticata? Recuperala</p>
+    </div>
     <div class="status-check">
         <h2>Sei un cliente?</h2>
         <a href="/statoriparazione">Controlla lo stato della tua riparazione</a>
+    </div>
+</div>
+<div id="modal">
+    <div id="askmodal" class="utente-form-section modal-content">
+        <h2>Recupero password</h2>
+        <p>Inserisci la tua mail, riceverai un codice di recupero:</p>
+        <input id="email_field" type="email" name="email" placeholder="Email" required>
+        <button id="sendCode" class="submit-button">Pagamento</button>
+        <button id="cancel-pagamento" class="submit-button">Annulla</button>
+    </div>
+    <div id="paymodal" class="utente-form-section modal-content">
+        <h2>Pezzi utilizzati:</h2>
+        <table class="search-table" id="pezziTable">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantità</th>
+                <th>Prezzo</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <h2>Ore di lavoro (40€/h): <span id="ore"></span></h2>
+        <h2>Totale: <span id="totale"></span> €</h2>
+        <button id="confirm-pay" class="submit-button">Pagato</button>
     </div>
 </div>
 </body>

@@ -3,10 +3,7 @@ package com.wsda.bikegarage;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-
-
 import java.util.Properties;
-
 
 public class EmailSender {
 
@@ -31,7 +28,6 @@ public class EmailSender {
 
             // Crea una nuova sessione con l'autenticazione
             Session session = Session.getInstance(properties, auth);
-
             // Crea un nuovo messaggio email
             Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress("bikegageofficial@gmail.com"));
@@ -46,8 +42,5 @@ public class EmailSender {
             e.printStackTrace();
         }
     }
-
-
-
 
 }
