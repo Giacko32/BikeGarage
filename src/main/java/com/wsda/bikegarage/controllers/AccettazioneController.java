@@ -65,13 +65,13 @@ public class AccettazioneController {
     }
 
     @PostMapping("/creaRiparazione")
-    public int creaRiparazione(@RequestParam(name = "targa", required = true) String targa, @RequestParam(name = "note", required = true) String note) {
+    public int creaRiparazione(@RequestParam(name = "targa", required = true) String targa) {
+        System.out.println(targa);
         Riparazione rip = new Riparazione();
         Moto moto = new Moto();
         moto.setTarga(targa);
         rip.setTarga(moto);
         rip.setOre(0);
-        rip.setNote(note);
         rip.setLavorazioni("");
         rip.setStato("In attesa");
         try{

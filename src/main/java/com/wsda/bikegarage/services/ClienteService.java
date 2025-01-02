@@ -17,8 +17,7 @@ public class ClienteService {
 
     public Cliente registraCliente(Cliente cliente) {
         if (clienteRepository.findClienteByEmail(cliente.getEmail()) == null) {
-            Cliente cliente1 = clienteRepository.save(cliente);
-            return cliente1;
+            return clienteRepository.save(cliente);
         } else {
             Cliente clienteError = new Cliente();
             clienteError.setId(0);
