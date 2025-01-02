@@ -127,7 +127,7 @@ button.search-repair:hover {
     animation: fadeIn 1s ease-in-out;
 }
 
-.utente-form-section h2 {
+.utente-form-section h2, .utente-form-section label{
     font-size: 22px; /* Reduce the size of section headings */
     margin-bottom: 20px;
     color: #ff0000;

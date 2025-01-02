@@ -6,6 +6,7 @@
     <title>Bike Garage Login</title>
     <link rel="stylesheet" href="/styles/styles.css">
     <link rel="icon" type="image/x-icon" href="/imgs/logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 <div class="login-container">
@@ -27,7 +28,7 @@
         </div>
     </form>
     <div class="forgot-password">
-        <p>Password dimenticata? Recuperala</p>
+        <p id="recuperoPassword">Password dimenticata? Recuperala</p>
     </div>
     <div class="status-check">
         <h2>Sei un cliente?</h2>
@@ -35,32 +36,18 @@
     </div>
 </div>
 <div id="modal">
-    <div id="askmodal" class="utente-form-section modal-content">
+    <div id="code-modal" class="utente-form-section modal-content">
         <h2>Recupero password</h2>
-        <p>Inserisci la tua mail, riceverai un codice di recupero:</p>
+        <label for="email_field">Inserisci la tua mail, riceverai un codice di recupero:</label>
         <input id="email_field" type="email" name="email" placeholder="Email" required>
-        <button id="sendCode" class="submit-button">Pagamento</button>
-        <button id="cancel-pagamento" class="submit-button">Annulla</button>
+        <button id="sendCode" class="submit-button">Invia codice</button>
+        <button id="cancel" class="submit-button">Annulla</button>
     </div>
-    <div id="paymodal" class="utente-form-section modal-content">
-        <h2>Pezzi utilizzati:</h2>
-        <table class="search-table" id="pezziTable">
-            <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Quantità</th>
-                <th>Prezzo</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-        <h2>Ore di lavoro (40€/h): <span id="ore"></span></h2>
-        <h2>Totale: <span id="totale"></span> €</h2>
-        <button id="confirm-pay" class="submit-button">Pagato</button>
+    <div id="password-modal" class="utente-form-section modal-content">
+        <h2>Inserisci nuova password:</h2>
     </div>
 </div>
+<script src="/scripts/recupera_password.js"></script>
 </body>
 </html>
 
