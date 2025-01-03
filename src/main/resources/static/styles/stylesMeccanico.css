@@ -1,17 +1,15 @@
-/* Stile Generale */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff0000, #000000); /* Gradient Rosso-Nero */
+    background: linear-gradient(135deg, #ff0000, #000000);
     color: #fff;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
-/* Topbar */
 .topbar {
-    background-color: #fff5e1; /* Colore panna */
+    background-color: #fff5e1;
     color: #000;
     display: flex;
     align-items: center;
@@ -21,7 +19,7 @@ body {
 }
 
 .logo-small img {
-    width: 60px; /* Logo più grande */
+    width: 60px;
     height: auto;
 }
 
@@ -31,12 +29,25 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #000; /* Nero */
+    color: #000;
 }
 
 .garage-title span {
-    color: #ff0000; /* Rosso */
+    color: #ff0000;
     font-style: italic;
+}
+
+.user-info {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info span {
+    font-size: 14px;
+    color: #000000;
 }
 
 /* Contenuto Principale */
@@ -117,9 +128,8 @@ body {
 .form-group textarea,
 .form-group input,
 .form-group select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
-    margin: 10px 0;
     border: 2px solid #000;
     border-radius: 5px;
     font-size: 16px;
@@ -139,7 +149,8 @@ body {
 .update-vehicle {
     padding: 10px 15px;
     background-color: #ff0000; /* Rosso intenso */
-    color: #fff; /* Testo bianco */
+    color: #fff;
+    margin: 20px 20px 0 0;/* Testo bianco */
     font-weight: bold; /* Testo in grassetto */
     border: none; /* Nessun bordo */
     border-radius: 5px; /* Angoli arrotondati */
@@ -218,18 +229,6 @@ body {
     }
 }
 
-.user-info {
-    width: 15%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.user-info span {
-    font-size: 14px;
-    color: #000000;
-}
 
 .logout-button {
     padding: 15px;

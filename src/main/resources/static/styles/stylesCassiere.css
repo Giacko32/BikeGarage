@@ -1,17 +1,15 @@
-/* Stile Generale */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff0000, #000000); /* Gradient Rosso-Nero */
+    background: linear-gradient(135deg, #ff0000, #000000);
     color: #fff;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
-/* Topbar */
 .topbar {
-    background-color: #fff5e1; /* Colore panna */
+    background-color: #fff5e1;
     color: #000;
     display: flex;
     align-items: center;
@@ -29,14 +27,29 @@ body {
     margin-left: 20px;
     font-size: 24px;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     color: #000;
 }
 
 .garage-title span {
     color: #ff0000;
+    font-style: italic;
 }
 
-/* Contenitore Principale */
+.garage-title span {
+    color: #ff0000;
+    font-style: italic;
+}
+
+.user-info {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .main-container {
     flex: 1;
     display: flex;
@@ -112,6 +125,15 @@ button.search-repair:hover {
 .modal-content {
     margin: 15% auto;
     width: 60%;
+}
+
+.modal-content div {
+    margin: 0 auto;
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #paymodal {

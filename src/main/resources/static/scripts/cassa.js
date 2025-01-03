@@ -21,7 +21,9 @@ $(document).ready(function(){
         }
     })
 
-    $("#cancel-pagamento").click(function(){
+    $(".cancel-pagamento").click(function(){
+        $("#paymodal").hide();
+        $("#askmodal").show();
         $("#modal").hide();
     })
 

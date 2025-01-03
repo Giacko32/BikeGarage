@@ -44,8 +44,10 @@
         <p>Ore di lavoro: <span id="orespan"></span></p>
         <p>Stato: <span id="statospan"></span></p>
         <p>Meccanico: <span id="meccanicospan"></span></p>
-        <button id="pagamento" class="submit-button">Pagamento</button>
-        <button id="cancel-pagamento" class="submit-button">Annulla</button>
+        <div>
+            <button id="pagamento" class="submit-button">Pagamento</button>
+            <button class="submit-button cancel-pagamento">Annulla</button>
+        </div>
     </div>
     <div id="paymodal" class="utente-form-section modal-content">
         <h2>Pezzi utilizzati:</h2>
@@ -63,7 +65,10 @@
         </table>
         <h2>Ore di lavoro (40€/h): <span id="ore"></span></h2>
         <h2>Totale: <span id="totale"></span> €</h2>
-        <button id="confirm-pay" class="submit-button">Pagato</button>
+        <div>
+            <button id="confirm-pay" class="submit-button">Pagato</button>
+            <button class="submit-button cancel-pagamento">Annulla</button>
+        </div>
     </div>
 </div>
 <script src="/scripts/cassa.js"></script>
