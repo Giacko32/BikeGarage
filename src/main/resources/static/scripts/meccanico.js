@@ -81,6 +81,7 @@ $(document).ready(function(){
         $.post("meccanico/updateriparazione",riparazioneData,function(riparazione){
             alert("Riparazione aggiornata con successo")
             if (status === "Completata"){
+                $("#aggiunta").remove()
                 $(".add-part-section").hide()
                 $("#selectedVehicle").hide()
                 $("#noVehicleSelected").show()
