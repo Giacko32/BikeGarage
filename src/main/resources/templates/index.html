@@ -24,7 +24,7 @@
         </div>
         <input type="submit" class="login-button" value="Login"></input>
         <div id="div-error" th:if="${error}">
-            Username o password invalidi
+            Username o password errati
         </div>
     </form>
     <div class="forgot-password">
@@ -40,8 +40,10 @@
         <h2>Recupero password</h2>
         <label for="email_field">Inserisci la tua mail, riceverai un codice di recupero:</label>
         <input id="email_field" type="email" name="email" placeholder="Email" required>
+        <div>
         <button id="sendCode" class="submit-button">Invia codice</button>
         <button id="cancel" class="submit-button">Annulla</button>
+        </div>
     </div>
     <div id="verifica-codice-modal" class="utente-form-section modal-content">
         <h2>Verifica codice:</h2>

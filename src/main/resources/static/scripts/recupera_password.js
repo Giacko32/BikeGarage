@@ -19,7 +19,7 @@ $(document).ready(function () {
                     mail = mailvalue
                     code = data
                     $("#code-modal").hide()
-                    $("#verifica-codice-modal").show()
+                    $("#verifica-codice-modal").css("display", "flex")
                 }
             })
         }else {
@@ -31,7 +31,7 @@ $(document).ready(function () {
         if ($("#code_field").val() !== ""){
             if ($("#code_field").val() === code){
                 $("#verifica-codice-modal").hide()
-                $("#password-modal").show()
+                $("#password-modal").css("display", "flex")
             } else {
                 alert("Codice errato")
             }
@@ -47,7 +47,7 @@ $(document).ready(function () {
             $.post("setNewPassword", {password: new_password, mail: mail}, function(data){
                 if (data === "changed"){
                     $("#password-modal").hide()
-                    $("#code-modal").show()
+                    $("#code-modal").css("display", "flex")
                     $("#modal").hide()
                     alert("Password cambiata con successo")
                 }
