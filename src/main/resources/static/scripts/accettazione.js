@@ -48,20 +48,24 @@ $(document).ready(function () {
                 "nome": nome,
                 "cognome": cognome,
                 "email": email
-            }, function (data) {
-                if (data.id !== 0) {
-                    const new_row = $("<tr></tr>")
-                    new_row.addClass("user-row")
-                    new_row.attr("id", data.id);
-                    const name_td = $("<td></td>").text(data.nome)
-                    const cognome_td = $("<td></td>").text(data.cognome)
-                    const email_td = $("<td></td>").text(data.email)
-                    new_row.append(name_td, cognome_td, email_td)
-                    $("tbody").append(new_row)
-                    $(".registration-form-section").hide()
-                    alert("Utente registrato con successo")
+            }, function (data, status) {
+                if (status === "success") {
+                    if (data.id !== 0) {
+                        const new_row = $("<tr></tr>")
+                        new_row.addClass("user-row")
+                        new_row.attr("id", data.id);
+                        const name_td = $("<td></td>").text(data.nome)
+                        const cognome_td = $("<td></td>").text(data.cognome)
+                        const email_td = $("<td></td>").text(data.email)
+                        new_row.append(name_td, cognome_td, email_td)
+                        $("tbody").append(new_row)
+                        $(".registration-form-section").hide()
+                        alert("Utente registrato con successo")
+                    } else {
+                        alert("Mail già registrata")
+                    }
                 } else {
-                    alert("Mail già registrata")
+                    alert("Errore comunicazione con il server")
                 }
             })
         } else {
@@ -75,8 +79,12 @@ $(document).ready(function () {
         $("#add-moto").hide()
         $("#motoTable").find(".moto-row").remove()
         id_utente_current = $(this).attr("id")
-        $.get("/accettazione/motoById", {"id": id_utente_current}, function (data) {
-            data.forEach(element => addMotoRow(element))
+        $.get("/accettazione/motoById", {"id": id_utente_current}, function (data, status) {
+            if(status === "success") {
+                data.forEach(element => addMotoRow(element))
+            } else {
+                alert("Errore comunicazione con il server")
+            }
         })
         $("#moto-search").show()
     })
@@ -110,15 +118,19 @@ $(document).ready(function () {
                 "marca": marca,
                 "modello": modello,
                 "id": id_utente_current
-            }, data => {
-                if(data.targa !== "-1"){
-                    alert("Moto registrata con successo")
-                    addMotoRow(data)
-                } else {
-                    alert("Targa già registrata")
+            }, (data, status) => {
+                if(status === "success") {
+                    if (data.targa !== "-1") {
+                        alert("Moto registrata con successo")
+                        addMotoRow(data)
+                    } else {
+                        alert("Targa già registrata")
+                    }
+                    $("#add-moto").hide()
+                    $("#moto-search").show()
+                }else{
+                    alert("Errore comunicazione con il server")
                 }
-                $("#add-moto").hide()
-                $("#moto-search").show()
             })
         } else {
             alert("Campi vuoti o errati, impossibile procedere")
@@ -131,13 +143,20 @@ $(document).ready(function () {
     });
 
     $("#modal").on("click", "#registra-pratica", function () {
-        $.post("/accettazione/creaRiparazione", {"targa": targa_moto_current, "note":$("#note-bar").val()}, function (data) {
-            if (data !== -1) {
-                alert("Pratica creata con codice " + data)
+        $.post("/accettazione/creaRiparazione", {
+            "targa": targa_moto_current,
+            "note": $("#note-bar").val()
+        }, function (data, status) {
+            if (status === "success") {
+                if (data !== -1) {
+                    alert("Pratica creata con codice " + data)
+                } else {
+                    alert("Errore Pratica")
+                }
+                $("#modal").hide()
             } else {
-                alert("Errore Pratica")
+                alert("Errore comunicazione con il server")
             }
-            $("#modal").hide()
         })
     })
 
