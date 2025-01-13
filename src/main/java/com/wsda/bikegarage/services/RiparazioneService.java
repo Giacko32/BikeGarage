@@ -1,11 +1,9 @@
 package com.wsda.bikegarage.services;
 
-import com.wsda.bikegarage.EmailSender;
+import com.wsda.bikegarage.Utils.EmailSender;
 import com.wsda.bikegarage.entities.Impiegato;
 import com.wsda.bikegarage.entities.Moto;
-import com.wsda.bikegarage.entities.PezziRichiesti;
 import com.wsda.bikegarage.entities.Riparazione;
-import com.wsda.bikegarage.repositories.PezziRichiestiRepository;
 import com.wsda.bikegarage.repositories.RiparazioneRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

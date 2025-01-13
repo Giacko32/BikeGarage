@@ -1,4 +1,4 @@
-package com.wsda.bikegarage;
+package com.wsda.bikegarage.Utils;
 
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;

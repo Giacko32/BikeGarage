@@ -1,6 +1,6 @@
 package com.wsda.bikegarage.services;
 
-import com.wsda.bikegarage.EmailSender;
+import com.wsda.bikegarage.Utils.EmailSender;
 import com.wsda.bikegarage.entities.Impiegato;
 import com.wsda.bikegarage.repositories.ImpiegatoRepository;
 import jakarta.transaction.Transactional;
