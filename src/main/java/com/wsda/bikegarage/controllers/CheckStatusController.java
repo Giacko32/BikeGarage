@@ -20,7 +20,6 @@ public class CheckStatusController {
             idriparazione = Integer.parseInt(code);
             return riparazioneService.getRiparazione(idriparazione,targa);
         }catch (NumberFormatException e){
-            System.out.println(e);
             return new Riparazione();
         }
     }

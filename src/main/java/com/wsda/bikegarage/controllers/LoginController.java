@@ -51,7 +51,6 @@ public class LoginController {
             case "ac" -> {
                 List<Cliente> clienti = clienteService.getAllUtenti().stream().toList();
                 model.addAttribute("clienti", clienti);
-                System.out.println("ciao");
                 return "accettazione";
             }
             case "ca" -> {

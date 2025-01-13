@@ -130,7 +130,6 @@ $(document).ready(function () {
                 getpezzi();
             },
             error: function (err) {
-                console.error("Errore:", err);
                 alert("Errore durante l'aggiunta dei pezzi.");
             }
         });
